@@ -1,13 +1,14 @@
 import React from 'react';
 
 import CategoriesMenu from 'components/CategoriesMenu';
-
-import { Title } from './styled';
+import Page from 'components/Page';
 
 class Home extends React.Component {
   render() {
     return (
-      <CategoriesMenu/>
+      <Page direction='row'>
+        <CategoriesMenu/>
+      </Page>
     );
   }
 }

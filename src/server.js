@@ -2,8 +2,10 @@ import App from './App';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import express from 'express';
-import { ServerStyleSheet } from 'styled-components';
+import { ServerStyleSheet, ThemeProvider } from 'styled-components';
 import { renderToString } from 'react-dom/server';
+
+import theme from 'config/theme';
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 
@@ -15,7 +17,9 @@ server
     const context = {};
     const markup = renderToString(
       <StaticRouter context={context} location={req.url}>
-        <App/>
+        <ThemeProvider theme={theme}>
+          <App/>
+        </ThemeProvider>
       </StaticRouter>
     );
 

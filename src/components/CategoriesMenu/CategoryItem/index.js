@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+
+import { CategoryItemWrapper, CategoryName } from './styled';
 
 export default class CategoryItem extends React.PureComponent {
   constructor(props) {
@@ -17,22 +19,25 @@ export default class CategoryItem extends React.PureComponent {
     });
   }
 
-  getSubLevelItems() {
+  getSublevelItems() {
     const { category } = this.props;
 
     return (category.sublevels || []).map(subLevel => (
-      <CategoryItem key={subLevel.id} category={subLevel}/>
+      <CategoryItem key={subLevel.id} category={subLevel} sublevel/>
     ));
   }
 
   render() {
-    const { category } = this.props;
+    const { category, sublevel } = this.props;
+    const { opened } = this.state;
+
+    const arrow = !category.sublevels ? '' : opened ? '< ' : '> ';
 
     return (
-      <Fragment>
-        <label onClick={this.toggleOpened}>{category.name}</label>
-        {this.state.opened && this.getSubLevelItems()}
-      </Fragment>
+      <CategoryItemWrapper sublevel={sublevel}>
+        <CategoryName onClick={this.toggleOpened}>{arrow}{category.name}</CategoryName>
+        {this.state.opened && this.getSublevelItems()}
+      </CategoryItemWrapper>
     );
   }
 }
