@@ -2,7 +2,7 @@ import React from 'react'
 
 import CategoryItem from './CategoryItem';
 
-import info from './categories.json'
+import info from 'data/categories.json'
 
 import { CategoriesMenuWrapper } from './styled';
 
