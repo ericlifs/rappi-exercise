@@ -1,16 +1,14 @@
 import React from 'react';
 
-import CategoriesMenu from 'components/CategoriesMenu';
 import Page from 'components/Page';
+import CategoriesMenu from 'components/CategoriesMenu';
+import ProductsList from 'components/ProductsList';
 
-class Home extends React.Component {
-  render() {
-    return (
-      <Page direction='row'>
-        <CategoriesMenu/>
-      </Page>
-    );
-  }
-}
+const Home = () => (
+  <Page direction='row'>
+    <CategoriesMenu/>
+    <ProductsList/>
+  </Page>
+);
 
 export default Home;
