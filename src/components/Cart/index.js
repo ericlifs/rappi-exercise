@@ -19,6 +19,14 @@ class Cart extends React.PureComponent {
     this.toggleCart = this.toggleCart.bind(this);
   }
 
+  static getDerivedStateFromProps(props) {
+    if (!props.quantity) {
+      return {
+        opened: false
+      }
+    }
+  }
+
   toggleCart() {
     this.setState({
       opened: !this.state.opened

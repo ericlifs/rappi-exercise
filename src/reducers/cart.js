@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { addProductToCart } from 'actions/cart'
+import { addProductToCart, removeProductFromCart } from 'actions/cart'
 
 const defaultState = {
   products: []
@@ -29,6 +29,23 @@ const reducer = handleActions(
 
       return {
         products: [...state.products, { ...product, quantity: 1 }]
+      }
+    },
+    [removeProductFromCart]: (state, { payload: { product }}) => {
+      const products = state.products.map(cartProduct => {
+        if (cartProduct.id === product.id) {
+          return {
+            ...cartProduct,
+            quantity: --cartProduct.quantity
+          }
+        }
+
+        return cartProduct
+      });
+
+      return {
+        ...state,
+        products: products.filter(cartProduct => cartProduct.quantity)
       }
     }
   },

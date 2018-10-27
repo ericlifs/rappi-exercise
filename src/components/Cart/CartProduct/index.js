@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { addProductToCart } from 'actions/cart';
+import { addProductToCart, removeProductFromCart } from 'actions/cart';
 
 import {
   CartProductColumn,
@@ -26,7 +26,7 @@ class CartProduct extends React.PureComponent {
         <CartProductQuantity>
           <CartProductOperation onClick={() => this.props.addProductToCart(product)}>+</CartProductOperation>
           <Quantity>{product.quantity}</Quantity>
-          <CartProductOperation>-</CartProductOperation>
+          <CartProductOperation onClick={() => this.props.removeProductFromCart(product)}>-</CartProductOperation>
         </CartProductQuantity>
       </CartProductWrapper>
     )
@@ -35,7 +35,8 @@ class CartProduct extends React.PureComponent {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    addProductToCart
+    addProductToCart,
+    removeProductFromCart
   }, dispatch)
 );
 
