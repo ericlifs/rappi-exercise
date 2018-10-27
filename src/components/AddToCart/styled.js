@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const AddToCartWrapper = styled.button`
-  background: ${({ theme }) => theme.colors.black};
+  background: ${({ theme }) => theme.colors.chambray};
   color: ${({ theme }) => theme.colors.white};
 
+  border-radius: 3px;
+  cursor: pointer;
   padding: 10px;
   width: 100%;
 `;

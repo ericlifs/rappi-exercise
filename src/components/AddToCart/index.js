@@ -1,11 +1,21 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { addProductToCart } from 'actions/cart';
 
 import { AddToCartWrapper } from './styled';
 
-const AddToCart = ({ product }) => (
-  <AddToCartWrapper>
+const AddToCart = ({ product, addProductToCart }) => (
+  <AddToCartWrapper onClick={() => addProductToCart(product)}>
     Agregar al carrito
   </AddToCartWrapper>
 );
 
-export default AddToCart;
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    addProductToCart
+  }, dispatch)
+);
+
+export default connect(null, mapDispatchToProps)(AddToCart)

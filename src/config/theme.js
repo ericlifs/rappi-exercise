@@ -1,5 +1,6 @@
 const theme = {
   colors: {
+    chambray: '#386084',
     porcelain: '#e7e9ea',
     white: '#ffffff',
     black: '#000000',

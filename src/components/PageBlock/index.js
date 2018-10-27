@@ -11,6 +11,7 @@ const PageBlock = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
+  overflow: visible;
 `;
 
 export default PageBlock;

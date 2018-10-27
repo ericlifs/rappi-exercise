@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.div`
   background: ${({ theme }) => theme.colors.athensGray};
   border-bottom: 1px solid ${({ theme }) => theme.colors.porcelain};
 
+  overflow: visible;
   justify-content: space-between;
   align-items: center;
   display: flex;
