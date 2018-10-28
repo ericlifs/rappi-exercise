@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import getSortedProducts from 'selectors/getSortedProducts';
+
 import SortBar from 'components/SortBar';
 import Product from './Product';
 
@@ -28,7 +30,8 @@ const ProductsList = ({ filteredProducts, categoryProducts }) => (
 );
 
 const mapStateToProps = ({ products }) => ({
-  ...products
+  categoryProducts: products.categoryProducts,
+  filteredProducts: getSortedProducts(products)
 });
 
 export default connect(mapStateToProps)(ProductsList);

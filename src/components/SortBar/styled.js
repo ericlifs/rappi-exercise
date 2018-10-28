@@ -24,13 +24,20 @@ export const SortBarWrapper = styled.div`
 `;
 
 export const SortColumn = styled.div`
-  width: 50%;
+  flex: 1;
 `;
 
 export const SearchColumn = styled.div``;
 
+export const SortControl = styled.select`
+  width: 150px;
+  height: 30px;
+  margin-left: 10px;
+`;
+
 export const SearchControl = styled.input`
   width: 150px;
-  padding: 5px;
+  height: 30px;
+  padding: 0 5px;
   margin-left: 10px;
 `;

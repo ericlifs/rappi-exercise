@@ -12,7 +12,6 @@ export const ProductsWrapper = styled.div`
 `;
 
 export const NoResults = styled.label`
-  width: 80%;
   padding: 50px;
   text-align: center;
 `;

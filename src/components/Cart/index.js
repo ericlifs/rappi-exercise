@@ -55,7 +55,7 @@ class Cart extends React.PureComponent {
         <ProductsList>
           {cartProducts.map(product => <CartProduct key={product.id} product={product}/>)}
         </ProductsList>
-        <CheckoutButton onClick={() => checkoutProducts()}>Comprar ({ total.toFixed(2) })</CheckoutButton>
+        <CheckoutButton onClick={() => checkoutProducts()}>Comprar (${ total.toFixed(2) })</CheckoutButton>
       </CartList>
     )
   }

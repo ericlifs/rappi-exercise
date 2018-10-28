@@ -8,7 +8,7 @@ const Product = ({ product }) => {
     <ProductWrapper>
       <ProductInfo>
         <ProductName>{product.name}</ProductName>
-        <ProductSubline>{product.price}</ProductSubline>
+        <ProductSubline>${product.price}</ProductSubline>
         <ProductSubline>{product.available ? 'Disponible' : 'No disponible'}</ProductSubline>
         <ProductSubline>Quedan {product.quantity} en stock</ProductSubline>
       </ProductInfo>

@@ -49,7 +49,7 @@ class CartProduct extends React.PureComponent {
       <CartProductWrapper>
         <CartProductColumn>
           <CartProductInfo>{product.name}</CartProductInfo>
-          <CartProductInfo>{product.price}</CartProductInfo>
+          <CartProductInfo>${product.price}</CartProductInfo>
         </CartProductColumn>
         <CartProductQuantity>
           <CartProductOperation onClick={() => this.props.addProductToCart(product)}>+</CartProductOperation>

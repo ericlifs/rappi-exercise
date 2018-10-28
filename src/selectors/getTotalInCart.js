@@ -4,11 +4,9 @@ const getTotalInCart = createSelector(
   cart => cart,
   cart => {
     if (cart) {
-      return cart.products.reduce((memo, product) => {
-        const productPrice = Number(product.price.replace('$', '').replace(',', '.'));
-
-        return memo + (product.quantity * productPrice);
-      }, 0);
+      return cart.products.reduce((memo, { quantity, price }) => (
+        memo + (quantity * price)
+      ), 0);
     }
 
     return 0;
