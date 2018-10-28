@@ -15,6 +15,12 @@ class Category extends React.PureComponent {
     this.props.fetchProductsByCategory(Number(id));
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.props.fetchProductsByCategory(Number(this.props.match.params.id));
+    }
+  }
+
   render() {
     return (
       <Page direction='row' withHeader>
