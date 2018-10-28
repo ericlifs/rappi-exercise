@@ -17,7 +17,7 @@ class SortBar extends React.PureComponent {
     this.state = {
       term: '',
       sortMethod: '',
-      sortOrder: ''
+      sortOrder: SORT_ORDERS[0].value
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
@@ -29,7 +29,7 @@ class SortBar extends React.PureComponent {
       this.setState({
         term: '',
         sortMethod: '',
-        sortOrder: ''
+        sortOrder: SORT_ORDERS[0].value
       });
     }
   }

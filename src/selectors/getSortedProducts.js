@@ -7,7 +7,7 @@ const getSortedProducts = createSelector(
 
     if (sortMethod) {
       return [...filteredProducts].sort((first, second) => {
-        if (sortOrder === 'asc') {
+        if (sortOrder === 'desc') {
           return second[sortMethod] - first[sortMethod];
         }
 

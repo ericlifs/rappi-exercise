@@ -21,7 +21,7 @@ export const CartList = styled.div`
     height: 350px;
     opacity: 1;
   `}
-  
+
   ${({opened}) => !opened && css`
     height: 0;
     opacity: 0;

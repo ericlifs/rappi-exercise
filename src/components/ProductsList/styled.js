@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const ProductsListWrapper = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
+  margin: 20px;
 `;
 
 export const ProductsWrapper = styled.div`

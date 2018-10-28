@@ -24,7 +24,7 @@ const getProductsContent = products => {
 
 const ProductsList = ({ filteredProducts, categoryProducts }) => (
   <ProductsWrapper>
-    {categoryProducts && <SortBar/>}
+    {(categoryProducts || []).length > 0 && <SortBar/>}
     {getProductsContent(filteredProducts)}
   </ProductsWrapper>
 );

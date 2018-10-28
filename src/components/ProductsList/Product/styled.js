@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const ProductWrapper = styled.div`
   width: 20%;
-  margin: 10px;
   height: 160px;
   display: inline-flex;
   flex-direction: column;
