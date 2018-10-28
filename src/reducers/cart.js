@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { addProductToCart, removeProductFromCart } from 'actions/cart'
+import { addProductToCart, removeProductFromCart, checkoutProducts } from 'actions/cart'
 
 const defaultState = {
   products: []
@@ -44,10 +44,12 @@ const reducer = handleActions(
       });
 
       return {
-        ...state,
         products: products.filter(cartProduct => cartProduct.quantity)
       }
-    }
+    },
+    [checkoutProducts]: () => ({
+      ...defaultState
+    })
   },
   defaultState
 );

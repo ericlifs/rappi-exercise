@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { checkoutProducts } from 'actions/cart';
 
 import getQuantityInCart from 'selectors/getQuantityInCart';
 import getProductsInCart from 'selectors/getProductsInCart';
@@ -43,14 +46,14 @@ class Cart extends React.PureComponent {
   }
 
   getCartProducts() {
-    const { cartProducts, total } = this.props;
+    const { cartProducts, total, checkoutProducts } = this.props;
 
     return (
       <CartList opened={this.state.opened}>
         <ProductsList>
           {cartProducts.map(product => <CartProduct key={product.id} product={product}/>)}
         </ProductsList>
-        <CheckoutButton>Comprar ({ total.toFixed(2) })</CheckoutButton>
+        <CheckoutButton onClick={() => checkoutProducts()}>Comprar ({ total.toFixed(2) })</CheckoutButton>
       </CartList>
     )
   }
@@ -73,4 +76,10 @@ const mapStateToProps = ({ cart }) => ({
   cartProducts: getProductsInCart(cart)
 });
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    checkoutProducts
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
