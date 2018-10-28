@@ -33,6 +33,7 @@ export const SortControl = styled.select`
   width: 150px;
   height: 30px;
   margin-left: 10px;
+  font-size: 15px;
 `;
 
 export const SearchControl = styled.input`
@@ -40,4 +41,5 @@ export const SearchControl = styled.input`
   height: 30px;
   padding: 0 5px;
   margin-left: 10px;
+  font-size: 15px;
 `;

@@ -6,7 +6,8 @@ import info from 'data/products.json'
 const defaultState = {
   categoryProducts: null,
   filteredProducts: null,
-  sortMethod: null
+  sortMethod: null,
+  sortOrder: null
 };
 
 const reducer = handleActions(
@@ -27,9 +28,10 @@ const reducer = handleActions(
       ...state,
       filteredProducts: state.categoryProducts.filter(product => product.name.includes(term))
     }),
-    [setSortMethod]: (state, { payload: { sortMethod } }) => ({
+    [setSortMethod]: (state, { payload: { sortMethod, sortOrder } }) => ({
       ...state,
-      sortMethod
+      sortMethod,
+      sortOrder
     })
   },
   defaultState

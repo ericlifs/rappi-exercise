@@ -1,10 +1,12 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { searchProducts, setSortMethod } from 'actions/products';
 
 import SORT_METHODS from 'config/sortMethods';
+import SORT_ORDERS from 'config/sortOrders';
 
 import { SortBarWrapper, SortColumn, SearchColumn, SortControl, SearchControl } from './styled';
 
@@ -14,11 +16,22 @@ class SortBar extends React.PureComponent {
 
     this.state = {
       term: '',
-      sort: ''
+      sortMethod: '',
+      sortOrder: ''
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
-    this.onSortChange = this.onSortChange.bind(this);
+    this.onSortMethodChange = this.onSortMethodChange.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.setState({
+        term: '',
+        sortMethod: '',
+        sortOrder: ''
+      });
+    }
   }
 
   onSearchChange(event) {
@@ -27,10 +40,35 @@ class SortBar extends React.PureComponent {
     }, () => this.props.searchProducts(this.state.term));
   }
 
-  onSortChange(event) {
+  onSortMethodChange(event, field) {
     this.setState({
-      sort: event.target.value
-    }, () => this.props.setSortMethod(this.state.sort));
+      [field]: event.target.value,
+    }, () => {
+      const { sortMethod, sortOrder } = this.state;
+
+      this.props.setSortMethod(sortMethod, sortOrder);
+    });
+  }
+
+  getSortMethodInput() {
+    return (
+      <SortControl value={this.state.sortMethod} onChange={ev => this.onSortMethodChange(ev, 'sortMethod')}>
+        <option value="" disabled defaultValue>Ninguno</option>
+        {SORT_METHODS.map(({ value, label }) => (
+          <option key={value} value={value}>{label}</option>
+        ))}
+      </SortControl>
+    );
+  }
+
+  getSortOrderInput() {
+    return (
+      <SortControl value={this.state.sortOrder} onChange={ev => this.onSortMethodChange(ev, 'sortOrder')}>
+        {SORT_ORDERS.map(({ value, label }) => (
+          <option key={value} value={value}>{label}</option>
+        ))}
+      </SortControl>
+    );
   }
 
   render() {
@@ -38,12 +76,8 @@ class SortBar extends React.PureComponent {
       <SortBarWrapper>
         <SortColumn>
           Ordenar por
-          <SortControl value={this.state.sort} onChange={this.onSortChange}>
-            <option value="" disabled defaultValue>Ninguno</option>
-            {SORT_METHODS.map(({ value, label }) => (
-              <option key={value} value={value}>{label}</option>
-            ))}
-          </SortControl>
+          {this.getSortMethodInput()}
+          {this.getSortOrderInput()}
         </SortColumn>
         <SearchColumn>
           Buscar producto
@@ -61,4 +95,4 @@ const mapDispatchToProps = dispatch => (
   }, dispatch)
 );
 
-export default connect(null, mapDispatchToProps)(SortBar);
+export default withRouter(connect(null, mapDispatchToProps)(SortBar));
