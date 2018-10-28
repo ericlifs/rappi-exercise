@@ -1,8 +1,12 @@
 import React from 'react';
 
 import { SortBarWrapper, SortColumn, SearchColumn, SearchControl } from './styled';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default class SortBar extends React.PureComponent {
+import { searchProducts } from 'actions/products';
+
+class SortBar extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -16,7 +20,7 @@ export default class SortBar extends React.PureComponent {
   onSearchChange(event) {
     this.setState({
       term: event.target.value
-    });
+    }, () => this.props.searchProducts(this.state.term));
   }
 
   render() {
@@ -33,3 +37,11 @@ export default class SortBar extends React.PureComponent {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    searchProducts
+  }, dispatch)
+);
+
+export default connect(null, mapDispatchToProps)(SortBar);

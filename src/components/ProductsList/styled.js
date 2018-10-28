@@ -12,7 +12,7 @@ export const ProductsWrapper = styled.div`
 `;
 
 export const NoResults = styled.label`
+  width: 80%;
   padding: 50px;
-  width: 100%;
   text-align: center;
 `;

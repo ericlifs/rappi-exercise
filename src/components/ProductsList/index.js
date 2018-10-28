@@ -6,25 +6,29 @@ import Product from './Product';
 
 import { ProductsListWrapper, ProductsWrapper, NoResults } from './styled';
 
-const ProductsList = ({ products }) => {
+const getProductsContent = products => {
   if (products && products.length) {
     return (
-      <ProductsWrapper>
-        <SortBar/>
-        <ProductsListWrapper>
-          {products.map(product => (
-            <Product key={product.id} product={product}/>
-          ))}
-        </ProductsListWrapper>
-      </ProductsWrapper>
+      <ProductsListWrapper>
+        {products.map(product => (
+          <Product key={product.id} product={product}/>
+        ))}
+      </ProductsListWrapper>
     )
   }
 
   return <NoResults>Perdón, no se encontraron productos</NoResults>;
 };
 
+const ProductsList = ({ filteredProducts, categoryProducts }) => (
+  <ProductsWrapper>
+    {categoryProducts && <SortBar/>}
+    {getProductsContent(filteredProducts)}
+  </ProductsWrapper>
+);
+
 const mapStateToProps = ({ products }) => ({
-   products: products.results
+  ...products
 });
 
 export default connect(mapStateToProps)(ProductsList);

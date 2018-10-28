@@ -1,18 +1,26 @@
 import { handleActions } from 'redux-actions'
-import { fetchProductsByCategory } from 'actions/products'
+import { fetchProductsByCategory, searchProducts } from 'actions/products'
 
 import info from 'data/products.json'
 
 const defaultState = {
-  data: info.products,
-  results: null
+  categoryProducts: null,
+  filteredProducts: null
 };
 
 const reducer = handleActions(
   {
-    [fetchProductsByCategory]: (state, { payload: { sublevelId } }) => ({
+    [fetchProductsByCategory]: (state, { payload: { sublevelId } }) => {
+      const categoryProducts = info.products.filter(product => product.sublevel_id === sublevelId);
+
+      return {
+        categoryProducts,
+        filteredProducts: categoryProducts
+      }
+    },
+    [searchProducts]: (state, { payload: { term } }) => ({
       ...state,
-      results: state.data.filter(product => product.sublevel_id === sublevelId)
+      filteredProducts: state.categoryProducts.filter(product => product.name.includes(term))
     })
   },
   defaultState
