@@ -1,20 +1,22 @@
 import React, { Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 
-import store from './store';
+import createStore from './store';
 import Home from 'pages/Home';
 import GlobalStyle from 'config/styles';
 
+const { store, persistor } = createStore();
+
 const App = () => (
   <Provider store={store}>
-    <Fragment>
+    <PersistGate persistor={persistor}>
       <GlobalStyle/>
       <Switch>
         <Route exact path="/" component={Home}/>
       </Switch>
-    </Fragment>
+    </PersistGate>
   </Provider>
 );
 
