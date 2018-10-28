@@ -29,6 +29,8 @@ class Cart extends React.PureComponent {
         opened: false
       }
     }
+
+    return null;
   }
 
   componentDidUpdate(prevProps) {

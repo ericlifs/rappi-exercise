@@ -1,8 +1,5 @@
 import React from 'react'
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
-import { fetchProductsByCategory } from 'actions/products';
+import { withRouter } from 'react-router-dom';
 
 import { CategoryItemWrapper, CategoryName } from './styled';
 
@@ -18,7 +15,7 @@ class CategoryItem extends React.PureComponent {
   }
 
   onCategoryClick() {
-    const { category, fetchProductsByCategory } = this.props;
+    const { category, history } = this.props;
 
     if (category.sublevels) {
       return this.setState({
@@ -26,14 +23,19 @@ class CategoryItem extends React.PureComponent {
       });
     }
 
-    return fetchProductsByCategory(category.id);
+    history.push(`/category/${category.id}`);
   }
 
   getSublevelItems() {
-    const { category } = this.props;
+    const { category, history } = this.props;
 
     return (category.sublevels || []).map(subLevel => (
-      <CategoryItem key={subLevel.id} fetchProductsByCategory={this.props.fetchProductsByCategory} category={subLevel} sublevel/>
+      <CategoryItem
+        key={subLevel.id}
+        history={history}
+        category={subLevel}
+        sublevel
+      />
     ));
   }
 
@@ -52,10 +54,4 @@ class CategoryItem extends React.PureComponent {
   }
 }
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    fetchProductsByCategory
-  }, dispatch)
-);
-
-export default connect(null, mapDispatchToProps)(CategoryItem)
+export default withRouter(CategoryItem);
