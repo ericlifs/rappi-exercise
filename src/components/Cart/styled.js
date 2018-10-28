@@ -13,6 +13,7 @@ export const CartButtonWrapper = styled.button`
   border-radius: 3px;
   cursor: pointer;
   padding: 0 10px;
+  font-size: 15px;
 `;
 
 export const CartList = styled.div`
@@ -48,4 +49,5 @@ export const CheckoutButton = styled.button`
   cursor: pointer;
   padding: 10px;
   width: 100%;
+  font-size: 15px;
 `;

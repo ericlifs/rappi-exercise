@@ -16,7 +16,7 @@ const reducer = handleActions(
       const filteredProducts = info.products.filter(product => product.sublevel_id === sublevelId);
       filteredProducts.forEach(product => {
         product.price = product.price.replace('$', '');
-        product.price = Number(product.price.replace(',', '.'));
+        product.price = product.price.replace(',', '.');
       });
 
       return {

@@ -5,7 +5,7 @@ const getTotalInCart = createSelector(
   cart => {
     if (cart) {
       return cart.products.reduce((memo, { quantity, price }) => (
-        memo + (quantity * price)
+        memo + (quantity * Number(price))
       ), 0);
     }
 

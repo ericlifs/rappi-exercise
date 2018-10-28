@@ -8,4 +8,5 @@ export const AddToCartWrapper = styled.button`
   cursor: pointer;
   padding: 10px;
   width: 100%;
+  font-size: 15px;
 `;
