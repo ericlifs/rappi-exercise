@@ -29,7 +29,7 @@ export const CartList = styled.div`
   transition: all ease-in-out 750ms;
   background: white;
   position: absolute;
-  width: 250px;
+  width: 270px;
   top: 35px;
   right: 0;
 `;

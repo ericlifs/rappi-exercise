@@ -27,6 +27,14 @@ class Cart extends React.PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.quantity < this.props.quantity) {
+      this.setState({
+        opened: true
+      });
+    }
+  }
+
   toggleCart() {
     this.setState({
       opened: !this.state.opened
