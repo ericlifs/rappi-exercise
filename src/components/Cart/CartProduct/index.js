@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { addProductToCart, removeProductFromCart } from 'actions/cart';
+import { addProductToCart, removeProductFromCart, setQuantityOfProduct } from 'actions/cart';
 
 import {
   CartProductColumn,
@@ -10,12 +10,40 @@ import {
   CartProductOperation,
   CartProductQuantity,
   CartProductWrapper,
-  Quantity
+  ProductQuantity
 } from './styled';
 
 class CartProduct extends React.PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      quantity: 0
+    };
+
+    this.handleQuantityChange = this.handleQuantityChange.bind(this);
+  }
+
+  static getDerivedStateFromProps(props) {
+    return {
+      quantity: props.product.quantity
+    }
+  }
+
+  handleQuantityChange(event) {
+    const { product, removeProductFromCart, setQuantityOfProduct } = this.props;
+    const quantity = Number(event.target.value);
+
+    if (!quantity) {
+      return removeProductFromCart(product);
+    }
+
+    return setQuantityOfProduct(product, quantity);
+  }
+
   render() {
     const { product } = this.props;
+    const { quantity } = this.state;
 
     return (
       <CartProductWrapper>
@@ -25,7 +53,7 @@ class CartProduct extends React.PureComponent {
         </CartProductColumn>
         <CartProductQuantity>
           <CartProductOperation onClick={() => this.props.addProductToCart(product)}>+</CartProductOperation>
-          <Quantity>{product.quantity}</Quantity>
+          <ProductQuantity type='number' value={quantity} onChange={this.handleQuantityChange}/>
           <CartProductOperation onClick={() => this.props.removeProductFromCart(product)}>-</CartProductOperation>
         </CartProductQuantity>
       </CartProductWrapper>
@@ -36,7 +64,8 @@ class CartProduct extends React.PureComponent {
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     addProductToCart,
-    removeProductFromCart
+    removeProductFromCart,
+    setQuantityOfProduct,
   }, dispatch)
 );
 

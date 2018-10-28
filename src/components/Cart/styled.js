@@ -8,6 +8,7 @@ export const CartButtonWrapper = styled.button`
   background: ${({ theme }) => theme.colors.chambray};
   color: ${({ theme }) => theme.colors.white};
 
+  width: 100px;
   height: 35px;
   border-radius: 3px;
   cursor: pointer;

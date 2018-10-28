@@ -60,10 +60,11 @@ class Cart extends React.PureComponent {
 
   render() {
     const { quantity } = this.props;
+    const buttonText = this.state.opened ? 'Cerrar' : 'Comprar';
 
     return (
       <CartWrapper>
-        <CartButtonWrapper onClick={this.toggleCart}>Comprar ({ quantity })</CartButtonWrapper>
+        <CartButtonWrapper onClick={this.toggleCart}>{buttonText} ({ quantity })</CartButtonWrapper>
         {this.getCartProducts()}
       </CartWrapper>
     );

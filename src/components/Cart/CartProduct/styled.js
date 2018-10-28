@@ -30,3 +30,10 @@ export const CartProductOperation = styled(CartProductInfo)`
   font-size: 20px;
   font-weight: bold;
 `;
+
+export const ProductQuantity = styled.input`
+  width: 50px;
+  height: 30px;
+  margin: 0 10px;
+  text-align: center;
+`;
