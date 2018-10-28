@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect'
 
-// Return selected dates grouped by trip type
 const getQuantityInCart = createSelector(
   cart => cart,
   cart => {

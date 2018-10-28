@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import getQuantityInCart from 'selectors/getQuantityInCart';
 import getProductsInCart from 'selectors/getProductsInCart';
+import getTotalInCart from 'selectors/getTotalInCart';
 
 import CartProduct from './CartProduct';
 
@@ -42,14 +43,14 @@ class Cart extends React.PureComponent {
   }
 
   getCartProducts() {
-    const { cartProducts } = this.props;
+    const { cartProducts, total } = this.props;
 
     return (
       <CartList opened={this.state.opened}>
         <ProductsList>
           {cartProducts.map(product => <CartProduct key={product.id} product={product}/>)}
         </ProductsList>
-        <CheckoutButton>Comprar</CheckoutButton>
+        <CheckoutButton>Comprar ({ total.toFixed(2) })</CheckoutButton>
       </CartList>
     )
   }
@@ -59,7 +60,7 @@ class Cart extends React.PureComponent {
 
     return (
       <CartWrapper>
-        <CartButtonWrapper onClick={this.toggleCart}>Carrito ({ quantity })</CartButtonWrapper>
+        <CartButtonWrapper onClick={this.toggleCart}>Comprar ({ quantity })</CartButtonWrapper>
         {this.getCartProducts()}
       </CartWrapper>
     );
@@ -68,6 +69,7 @@ class Cart extends React.PureComponent {
 
 const mapStateToProps = ({ cart }) => ({
   quantity: getQuantityInCart(cart),
+  total: getTotalInCart(cart),
   cartProducts: getProductsInCart(cart)
 });
 
