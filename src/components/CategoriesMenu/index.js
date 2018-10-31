@@ -44,11 +44,11 @@ class CategoriesMenu extends React.Component {
     return (
       <CategoriesMenuWrapper opened={this.state.opened}>
         <CategoriesMenuTogglerWrapper>
-          <CategoriesMenuToggler opened={this.state.opened} onClick={this.toggleCategoriesMenu}>
+          <CategoriesMenuToggler onClick={this.toggleCategoriesMenu}>
             {buttonText}
           </CategoriesMenuToggler>
         </CategoriesMenuTogglerWrapper>
-        <CategoriesOptionsWrapper opened={this.state.opened}>
+        <CategoriesOptionsWrapper>
           {info.categories.map(category => (
             <CategoryItem key={category.id} category={category}/>
           ))}

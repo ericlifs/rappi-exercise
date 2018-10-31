@@ -28,7 +28,6 @@ export const CartButtonWrapper = styled.button`
 export const ProductsList = styled.div`
   height: 90%;
   overflow-y: scroll;
-  overflow: hidden;
 `;
 
 export const CartList = styled.div`
@@ -58,6 +57,7 @@ export const CartList = styled.div`
     z-index: 10;
     top: 50px;
     left: 0;
+    overflow: hidden;
 
     ${({ opened }) => opened && css`
       height: calc(100vh - 50px);
