@@ -1,19 +1,34 @@
 import styled, { css } from 'styled-components';
+import mediaQueries from 'components/MediaQueries';
 
 export const CartWrapper = styled.div`
   position: relative;
+
+  ${mediaQueries.mobile`
+    position: static;
+  `}
 `;
 
 export const CartButtonWrapper = styled.button`
   background: ${({ theme }) => theme.colors.chambray};
   color: ${({ theme }) => theme.colors.white};
 
-  width: 100px;
-  height: 35px;
   border-radius: 3px;
+  min-width: 100px;
   cursor: pointer;
   padding: 0 10px;
-  font-size: 15px;
+  font-size: 14px;
+  height: 35px;
+
+  ${mediaQueries.mobile`
+    font-size: 16px;
+  `}
+`;
+
+export const ProductsList = styled.div`
+  height: 90%;
+  overflow-y: scroll;
+  overflow: hidden;
 `;
 
 export const CartList = styled.div`
@@ -34,11 +49,20 @@ export const CartList = styled.div`
   width: 270px;
   top: 35px;
   right: 0;
-`;
 
-export const ProductsList = styled.div`
-  height: 90%;
-  overflow-y: scroll;
+  ${mediaQueries.mobile`
+    justify-content: space-between;
+    flex-direction: column;
+    width: inherit;
+    display: flex;
+    z-index: 10;
+    top: 50px;
+    left: 0;
+
+    ${({ opened }) => opened && css`
+      height: calc(100vh - 50px);
+    `}
+  `}
 `;
 
 export const CheckoutButton = styled.button`

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import mediaQueries from 'components/MediaQueries';
 
 export const ProductWrapper = styled.div`
   width: 20%;
-  height: 160px;
+  min-height: 160px;
   display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,6 +11,16 @@ export const ProductWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.athensGray};
   border-radius: 3px;
   padding: 10px;
+
+  ${mediaQueries.mobile`
+    width: 100%;
+    margin-bottom: 20px;
+    min-height: 180px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  `}
 `;
 
 export const ProductInfo = styled.div`
@@ -19,11 +30,19 @@ export const ProductInfo = styled.div`
 
 export const ProductSubline = styled.label`
   font-size: 14px;
+
+  ${mediaQueries.mobile`
+    font-size: 16px;
+  `}
 `;
 
 export const ProductName = styled(ProductSubline)`
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
+
+  ${mediaQueries.mobile`
+    font-size: 18px;
+  `}
 `;
 

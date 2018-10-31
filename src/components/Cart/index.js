@@ -11,6 +11,7 @@ import getTotalInCart from 'selectors/getTotalInCart';
 import CartProduct from './CartProduct';
 
 import { CartWrapper, CartButtonWrapper, CartList, ProductsList, CheckoutButton } from './styled';
+import {setMenuOpened} from "../../actions/ui";
 
 class Cart extends React.PureComponent {
   constructor(props) {
@@ -44,6 +45,8 @@ class Cart extends React.PureComponent {
   toggleCart() {
     this.setState({
       opened: !this.state.opened
+    }, () => {
+      this.props.setMenuOpened(this.state.opened)
     })
   }
 
@@ -81,7 +84,8 @@ const mapStateToProps = ({ cart }) => ({
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    checkoutProducts
+    checkoutProducts,
+    setMenuOpened
   }, dispatch)
 );
 

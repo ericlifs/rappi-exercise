@@ -7,7 +7,8 @@ export const CategoryName = styled.label`
 export const CategoryItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  
+  z-index: 2;
+
   ${({ sublevel }) => !sublevel && css`
     padding: 20px;
     

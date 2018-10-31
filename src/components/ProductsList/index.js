@@ -22,16 +22,16 @@ const getProductsContent = products => {
   return <NoResults>Perdón, no se encontraron productos</NoResults>;
 };
 
-const ProductsList = ({ filteredProducts, categoryProducts }) => (
-  <ProductsWrapper>
-    {(categoryProducts || []).length > 0 && <SortBar/>}
+const ProductsList = ({ filteredProducts, menuOpened, categoryProducts }) => (
+  <ProductsWrapper menuOpened={menuOpened}>
     {getProductsContent(filteredProducts)}
   </ProductsWrapper>
 );
 
-const mapStateToProps = ({ products }) => ({
+const mapStateToProps = ({ products, ui }) => ({
   categoryProducts: products.categoryProducts,
-  filteredProducts: getSortedProducts(products)
+  filteredProducts: getSortedProducts(products),
+  menuOpened: ui.menuOpened
 });
 
 export default connect(mapStateToProps)(ProductsList);

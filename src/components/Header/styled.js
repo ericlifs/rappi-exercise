@@ -20,5 +20,10 @@ export const HeaderWrapper = styled.div`
 
 export const BaratonLogo = styled.img`
   width: 175px;
-  height: 175px;
+  height: 45px;
+
+  ${mediaQueries.mobile`
+    width: 105px;
+    height: 25px;
+  `}
 `;

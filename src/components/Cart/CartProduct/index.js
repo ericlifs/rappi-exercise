@@ -48,7 +48,7 @@ class CartProduct extends React.PureComponent {
     return (
       <CartProductWrapper>
         <CartProductColumn>
-          <CartProductInfo>{product.name}</CartProductInfo>
+          <CartProductInfo >{product.name}</CartProductInfo>
           <CartProductInfo>${product.price}</CartProductInfo>
         </CartProductColumn>
         <CartProductQuantity>

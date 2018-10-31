@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import mediaQueries from 'components/MediaQueries';
 
 export const CartProductWrapper = styled.div`
   display: flex;
@@ -19,6 +20,10 @@ export const CartProductQuantity = styled.div`
 
 export const CartProductInfo = styled.label`
   font-size: 14px;
+
+  ${mediaQueries.mobile`
+    font-size: 16px;
+  `}
 `;
 
 export const Quantity = styled(CartProductInfo)`
@@ -35,5 +40,6 @@ export const ProductQuantity = styled.input`
   width: 50px;
   height: 30px;
   margin: 0 10px;
+  font-size: 16px;
   text-align: center;
 `;
