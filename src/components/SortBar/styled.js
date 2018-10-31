@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import { HEADER_HEIGHT } from 'components/Header';
+import mediaQueries from 'components/MediaQueries';
 
 export const SortBarWrapper = styled.div`
   background: ${({ theme }) => theme.colors.zumthor};
@@ -16,10 +15,14 @@ export const SortBarWrapper = styled.div`
     background: ${({ theme }) => theme.colors.zumthor};
     content: ' ';
     position: absolute;
-    top: ${HEADER_HEIGHT}px;
+    top: 100px;
     right: 0;
     height: 60px;
     width: calc((100vw - 1200px) / 2);
+    
+    ${mediaQueries.mobile`
+      top: 50px;
+    `}
   }
 `;
 

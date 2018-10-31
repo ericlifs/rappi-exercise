@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import { HEADER_HEIGHT } from 'components/Header';
+import mediaQueries from 'components/MediaQueries';
 
 export const CategoriesMenuWrapper = styled.div`
   background: ${({ theme }) => theme.colors.athensGray};
@@ -16,9 +15,13 @@ export const CategoriesMenuWrapper = styled.div`
     background: ${({ theme }) => theme.colors.athensGray};
     content: ' ';
     position: absolute;
-    top: ${HEADER_HEIGHT}px;
+    top: 100px;
     bottom: 0;
     left: 0;
     width: calc((100vw - 1200px) / 2);
+
+    ${mediaQueries.mobile`
+      top: 50px;
+    `}
   }
 `;

@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import mediaQueries from 'components/MediaQueries'
 
 export const HeaderWrapper = styled.div`
-  height: ${({ height }) => height}px;
+  height: 100px;
   background: ${({ theme }) => theme.colors.athensGray};
   border-bottom: 1px solid ${({ theme }) => theme.colors.porcelain};
 
@@ -10,6 +11,11 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   display: flex;
   flex: 1;
+  
+  ${mediaQueries.mobile`
+    height: 50px;
+    padding: 0 20px;
+  `}
 `;
 
 export const BaratonLogo = styled.img`
