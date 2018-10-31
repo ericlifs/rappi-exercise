@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { searchProducts, setSortMethod } from 'actions/products';
 import SORT_METHODS from 'config/sortMethods';
 import SORT_ORDERS from 'config/sortOrders';
 
-import { SortBarWrapper, SortColumn, SearchColumn, SortControl, SearchControl } from './styled';
+import { SortBarWrapper, SortColumn, SearchColumn, SortControl, SearchControl, Title } from './styled';
 
 class SortBar extends React.PureComponent {
   constructor(props) {
@@ -16,12 +16,20 @@ class SortBar extends React.PureComponent {
 
     this.state = {
       term: '',
+      opened: false,
       sortMethod: '',
       sortOrder: SORT_ORDERS[0].value
     };
 
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onSortMethodChange = this.onSortMethodChange.bind(this);
+    this.onToggleOpened = this.onToggleOpened.bind(this);
+  }
+
+  onToggleOpened() {
+    this.setState({
+      opened: !this.state.opened
+    })
   }
 
   componentDidUpdate(prevProps) {
@@ -73,9 +81,9 @@ class SortBar extends React.PureComponent {
 
   render() {
     return (
-      <SortBarWrapper>
+      <SortBarWrapper opened={this.state.opened}>
         <SortColumn>
-          Ordenar por
+          <Title onClick={this.onToggleOpened}>Ordenar</Title>
           {this.getSortMethodInput()}
           {this.getSortOrderInput()}
         </SortColumn>

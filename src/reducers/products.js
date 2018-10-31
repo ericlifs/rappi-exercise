@@ -26,7 +26,7 @@ const reducer = handleActions(
     },
     [searchProducts]: (state, { payload: { term } }) => ({
       ...state,
-      filteredProducts: state.categoryProducts.filter(product => product.name.includes(term))
+      filteredProducts: state.categoryProducts.filter(product => product.name.toLowerCase().includes(term.toLowerCase()))
     }),
     [setSortMethod]: (state, { payload: { sortMethod, sortOrder } }) => ({
       ...state,
