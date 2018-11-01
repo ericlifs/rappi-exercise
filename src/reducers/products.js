@@ -1,11 +1,17 @@
 import { handleActions } from 'redux-actions'
-import { fetchProductsByCategory, searchProducts, setSortMethod } from 'actions/products'
+import { fetchProductsByCategory, searchProducts, setSortMethod, fetchStaredProducts } from 'actions/products'
 
 import info from 'data/products.json'
+
+info.products.forEach(product => {
+  product.price = product.price.replace('$', '');
+  product.price = product.price.replace(',', '.');
+});
 
 const defaultState = {
   categoryProducts: null,
   filteredProducts: null,
+  staredProducts: null,
   sortMethod: null,
   sortOrder: null
 };
@@ -14,10 +20,6 @@ const reducer = handleActions(
   {
     [fetchProductsByCategory]: (state, { payload: { sublevelId } }) => {
       const filteredProducts = info.products.filter(product => product.sublevel_id === sublevelId);
-      filteredProducts.forEach(product => {
-        product.price = product.price.replace('$', '');
-        product.price = product.price.replace(',', '.');
-      });
 
       return {
         categoryProducts: filteredProducts,
@@ -32,6 +34,10 @@ const reducer = handleActions(
       ...state,
       sortMethod,
       sortOrder
+    }),
+    [fetchStaredProducts]: (state, { payload: { quantity }}) => ({
+      ...state,
+      staredProducts: info.products.sort(() => .5 - Math.random()).slice(0, quantity)
     })
   },
   defaultState

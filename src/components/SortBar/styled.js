@@ -62,8 +62,13 @@ export const Title = styled.label`
 `;
 
 export const SearchColumn = styled.div`
+  display: flex;
+  align-items: center;
+
   ${mediaQueries.mobile`
     margin-top: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   `}
 `;
 

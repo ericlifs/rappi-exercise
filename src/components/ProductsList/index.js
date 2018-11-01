@@ -6,7 +6,7 @@ import getSortedProducts from 'selectors/getSortedProducts';
 import SortBar from 'components/SortBar';
 import Product from './Product';
 
-import { ProductsListWrapper, ProductsWrapper, NoResults } from './styled';
+import { ProductsListWrapper, ProductsWrapper, NoResults, Title } from './styled';
 
 const getProductsContent = products => {
   if (products && products.length) {
@@ -22,10 +22,11 @@ const getProductsContent = products => {
   return <NoResults>Perdón, no se encontraron productos</NoResults>;
 };
 
-const ProductsList = ({ filteredProducts, menuOpened, categoryProducts }) => (
-  <ProductsWrapper menuOpened={menuOpened}>
+const ProductsList = ({ products, title, fullwidth, filteredProducts, menuOpened, categoryProducts }) => (
+  <ProductsWrapper fullwidth={fullwidth} menuOpened={menuOpened}>
+    {title && <Title>{title}</Title>}
     {(categoryProducts || []).length > 0 && <SortBar/>}
-    {getProductsContent(filteredProducts)}
+    {getProductsContent(products || filteredProducts)}
   </ProductsWrapper>
 );
 
