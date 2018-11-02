@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { searchProducts, setSortMethod } from 'actions/products';
+import { setSearchTerm, setSortMethod } from 'actions/products';
 
 import SORT_METHODS from 'config/sortMethods';
 import SORT_ORDERS from 'config/sortOrders';
@@ -26,26 +26,27 @@ class SortBar extends React.PureComponent {
     this.onToggleOpened = this.onToggleOpened.bind(this);
   }
 
-  onToggleOpened() {
-    this.setState({
-      opened: !this.state.opened
-    })
-  }
-
   componentDidUpdate(prevProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
       this.setState({
         term: '',
+        opened: false,
         sortMethod: '',
         sortOrder: SORT_ORDERS[0].value
       });
     }
   }
 
+  onToggleOpened() {
+    this.setState({
+      opened: !this.state.opened
+    })
+  }
+
   onSearchChange(event) {
     this.setState({
       term: event.target.value
-    }, () => this.props.searchProducts(this.state.term));
+    }, () => this.props.setSearchTerm(this.state.term));
   }
 
   onSortMethodChange(event, field) {
@@ -98,7 +99,7 @@ class SortBar extends React.PureComponent {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    searchProducts,
+    setSearchTerm,
     setSortMethod
   }, dispatch)
 );

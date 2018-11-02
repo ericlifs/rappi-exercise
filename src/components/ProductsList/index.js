@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import getSortedProducts from 'selectors/getSortedProducts';
+import filterAndSortProducts from 'selectors/filterAndSortProducts';
 
-import SortBar from 'components/SortBar';
 import Product from './Product';
+import SortBar from 'components/SortBar';
+import FilterBar from 'components/FilterBar';
 
 import { ProductsListWrapper, ProductsWrapper, NoResults, Title } from './styled';
 
@@ -25,14 +26,19 @@ const getProductsContent = products => {
 const ProductsList = ({ products, title, fullwidth, filteredProducts, menuOpened, categoryProducts }) => (
   <ProductsWrapper fullwidth={fullwidth} menuOpened={menuOpened}>
     {title && <Title>{title}</Title>}
-    {(categoryProducts || []).length > 0 && <SortBar/>}
+    {(categoryProducts || []).length > 0 && (
+      <Fragment>
+        <FilterBar/>
+        <SortBar/>
+      </Fragment>
+    )}
     {getProductsContent(products || filteredProducts)}
   </ProductsWrapper>
 );
 
 const mapStateToProps = ({ products, ui }) => ({
+  filteredProducts: filterAndSortProducts(products),
   categoryProducts: products.categoryProducts,
-  filteredProducts: getSortedProducts(products),
   menuOpened: ui.menuOpened
 });
 

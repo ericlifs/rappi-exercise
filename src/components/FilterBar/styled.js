@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import mediaQueries from 'components/MediaQueries';
 
-export const SortBarWrapper = styled.div`
+export const FilterBarWrapper = styled.div`
   background: ${({ theme }) => theme.colors.zumthor};
 
   display: flex;
@@ -35,21 +35,26 @@ export const SortBarWrapper = styled.div`
     height: auto;
 
     ${({ opened }) => !opened && css`
-      ${SearchColumn},
-      ${SortControl} {
+      ${FilterColumn} {
         display: none;
       }
     `}
   `}
 `;
 
-export const SortColumn = styled.div`
+export const FilterColumn = styled.div`
   align-items: center;
   display: flex;
   flex: 1;
 
   ${mediaQueries.mobile`
     flex-direction: column;
+    margin: 20px 0;
+    
+    ${({ row }) => row && css`
+      justify-content: center;
+      flex-direction: row;
+    `}
   `}
 `;
 
@@ -59,6 +64,8 @@ export const Title = styled.label`
   ${mediaQueries.mobile`
     text-transform: uppercase;
     pointer-events: all;
+    justify-content: center;
+    display: flex;
   `}
 `;
 
@@ -73,7 +80,7 @@ export const SearchColumn = styled.div`
   `}
 `;
 
-export const SortControl = styled.select`
+export const FilterControl = styled.select`
   width: 150px;
   height: 30px;
   margin-left: 10px;
@@ -87,7 +94,14 @@ export const SortControl = styled.select`
   `}
 `;
 
-export const SearchControl = styled.input`
+export const RangeWrapper = styled.div`
+  display: flex;
+  padding: 5px 0;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const RangeInput = styled.input`
   width: 150px;
   height: 30px;
   padding: 0 5px;
@@ -96,8 +110,12 @@ export const SearchControl = styled.input`
 
   ${mediaQueries.mobile`
     border: 1px solid;
-    margin: 0;
-    width: 98%;
+    margin: 0 10px;
+    width: 20%;
     border-radius: 3px;
   `}
+`;
+
+export const CheckboxInput = styled.input`
+  margin-left: 10px;
 `;

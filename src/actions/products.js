@@ -1,15 +1,19 @@
 import { createActions } from 'redux-actions'
 
-const { fetchProductsByCategory, searchProducts, setSortMethod, fetchStaredProducts } = createActions({
+const { fetchProductsByCategory, setSearchTerm, setSortMethod, fetchStaredProducts, setFilterFunction, clearFilters } = createActions({
   FETCH_PRODUCTS_BY_CATEGORY: sublevelId => ({ sublevelId }),
-  SEARCH_PRODUCTS: term => ({ term }),
+  SET_SEARCH_TERM: searchTerm => ({ searchTerm }),
   SET_SORT_METHOD: (sortMethod, sortOrder) => ({ sortMethod, sortOrder }),
   FETCH_STARED_PRODUCTS: quantity => ({ quantity }),
+  SET_FILTER_FUNCTION: (name, filter) => ({ name, filter }),
+  CLEAR_FILTERS: () => {}
 });
 
 export {
   fetchProductsByCategory,
-  searchProducts,
+  setSearchTerm,
   setSortMethod,
-  fetchStaredProducts
+  fetchStaredProducts,
+  setFilterFunction,
+  clearFilters
 }

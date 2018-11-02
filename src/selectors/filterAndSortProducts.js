@@ -1,9 +1,15 @@
 import { createSelector } from 'reselect'
 
-const getSortedProducts = createSelector(
+const filterAndSortProducts = createSelector(
   products => products,
   products => {
-    const { filteredProducts, sortMethod, sortOrder } = products;
+    const { categoryProducts, sortMethod, sortOrder, filters } = products;
+
+    if (!categoryProducts) {
+      return null;
+    }
+
+    const filteredProducts = categoryProducts.filter(product => Object.values(filters).every(filter => filter(product)));
 
     if (sortMethod) {
       return [...filteredProducts].sort((first, second) => {
@@ -20,4 +26,4 @@ const getSortedProducts = createSelector(
 );
 
 
-export default getSortedProducts;
+export default filterAndSortProducts;
