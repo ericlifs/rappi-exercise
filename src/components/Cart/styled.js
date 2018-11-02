@@ -46,6 +46,7 @@ export const CartList = styled.div`
   background: white;
   position: absolute;
   width: 270px;
+  z-index: 2;
   top: 35px;
   right: 0;
 

@@ -1,9 +1,9 @@
-export const minValue = minValue => product => !minValue ? product : Number(product.price) >= minValue;
+const FILTERS = {
+  MIN_VALUE: 'MIN_VALUE',
+  MAX_VALUE: 'MAX_VALUE',
+  MIN_STOCK: 'MIN_STOCK',
+  MAX_STOCK: 'MAX_STOCK',
+  AVAILABILITY: 'AVAILABILITY',
+};
 
-export const maxValue = maxValue => product => !maxValue ? product : Number(product.price) <= maxValue;
-
-export const minStock = minValue => product => !minValue ? product : product.quantity >= minValue;
-
-export const maxStock = maxValue => product => !maxValue ? product : product.quantity <= maxValue;
-
-export const availability = available => product => product.available === available;
+export default FILTERS;

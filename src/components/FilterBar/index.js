@@ -3,10 +3,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { minValue, maxValue, minStock, maxStock, availability } from 'config/filters';
 import { setFilterFunction, setSortMethod, clearFilters } from 'actions/products';
+import PriceFilter from './PriceFilter';
+import AvailabilityFilter from './AvailabilityFilter';
+import StockFilter from './StockFilter';
 
-import { FilterBarWrapper, FilterColumn, RangeLabel, RangeWrapper, RangeInput, Title, CheckboxInput } from './styled';
+import { FilterBarWrapper, Title } from './styled';
 
 class FilterBar extends React.PureComponent {
   constructor(props) {
@@ -14,11 +16,6 @@ class FilterBar extends React.PureComponent {
 
     this.state = {
       opened: false,
-      minPrice: '',
-      maxPrice: '',
-      minStock: '',
-      maxStock: '',
-      availability: false
     };
 
     this.onToggleOpened = this.onToggleOpened.bind(this);
@@ -28,11 +25,6 @@ class FilterBar extends React.PureComponent {
     if (prevProps.location.pathname !== this.props.location.pathname) {
       this.setState({
         opened: false,
-        minPrice: '',
-        maxPrice: '',
-        minStock: '',
-        maxStock: '',
-        availability: false
       }, () => this.props.clearFilters())
     }
   }
@@ -43,81 +35,13 @@ class FilterBar extends React.PureComponent {
     })
   }
 
-  onFieldChange(value, field) {
-    switch (field) {
-      case 'minPrice':
-        this.props.setFilterFunction('minPrice', minValue(value));
-        break;
-
-      case 'maxPrice':
-        this.props.setFilterFunction('maxPrice', maxValue(value));
-        break;
-
-      case 'minStock':
-        this.props.setFilterFunction('minStock', minStock(value));
-        break;
-
-      case 'maxStock':
-        this.props.setFilterFunction('maxStock', maxStock(value));
-        break;
-
-      default:
-        this.props.setFilterFunction('availability', availability(value));
-        break;
-    }
-
-    this.setState({
-      [field]: value
-    })
-  }
-
-  getPriceFilter() {
-    return (
-      <FilterColumn>
-        <RangeLabel>Precio</RangeLabel>
-        <RangeWrapper>
-          <RangeInput value={this.state.minPrice} onChange={(ev) => this.onFieldChange(ev.target.value, 'minPrice')}/>
-          <RangeLabel>Hasta</RangeLabel>
-          <RangeInput value={this.state.maxPrice} onChange={(ev) => this.onFieldChange(ev.target.value, 'maxPrice')}/>
-        </RangeWrapper>
-      </FilterColumn>
-    )
-  }
-
-  getStockFilter() {
-    return (
-      <FilterColumn>
-        <RangeLabel>Stock</RangeLabel>
-        <RangeWrapper>
-          <RangeInput value={this.state.minStock} onChange={(ev) => this.onFieldChange(ev.target.value, 'minStock')}/>
-          <RangeLabel>Hasta</RangeLabel>
-          <RangeInput value={this.state.maxStock} onChange={(ev) => this.onFieldChange(ev.target.value, 'maxStock')}/>
-        </RangeWrapper>
-      </FilterColumn>
-    )
-  }
-
-  getAvailabilityFilter() {
-    return (
-      <FilterColumn row>
-        Disponibilidad
-        <CheckboxInput
-          name='availability'
-          type='checkbox'
-          checked={this.state.availability}
-          onChange={(ev) => this.onFieldChange(ev.target.checked, 'availability')}
-        />
-      </FilterColumn>
-    );
-  }
-
   render() {
     return (
       <FilterBarWrapper opened={this.state.opened}>
         <Title onClick={this.onToggleOpened}>Filtrar</Title>
-        {this.getAvailabilityFilter()}
-        {this.getPriceFilter()}
-        {this.getStockFilter()}
+        <AvailabilityFilter/>
+        <PriceFilter/>
+        <StockFilter/>
       </FilterBarWrapper>
     );
   }
