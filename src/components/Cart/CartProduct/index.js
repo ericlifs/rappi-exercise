@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { addProductToCart, removeProductFromCart, setQuantityOfProduct } from 'actions/cart';
@@ -61,12 +60,10 @@ class CartProduct extends React.PureComponent {
   }
 }
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    addProductToCart,
-    removeProductFromCart,
-    setQuantityOfProduct,
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  addProductToCart,
+  removeProductFromCart,
+  setQuantityOfProduct,
+};
 
 export default connect(null, mapDispatchToProps)(CartProduct);

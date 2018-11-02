@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchProductsByCategory } from 'actions/products';
@@ -31,10 +30,8 @@ class Category extends React.PureComponent {
   }
 }
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    fetchProductsByCategory
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  fetchProductsByCategory
+};
 
 export default connect(null, mapDispatchToProps)(Category);

@@ -1,5 +1,4 @@
 import React from 'react'
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -58,10 +57,8 @@ class CategoriesMenu extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    setMenuOpened
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  setMenuOpened
+};
 
 export default withRouter(connect(null, mapDispatchToProps)(CategoriesMenu));

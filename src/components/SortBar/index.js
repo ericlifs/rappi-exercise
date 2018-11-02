@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -64,7 +63,7 @@ class SortBar extends React.PureComponent {
 
   getSortOrderInput() {
     return (
-      <SortControl value={this.state.sortOrder} onChange={ev => this.onSortMethodChange(ev, 'sortOrder')}>
+      <SortControl disabled={!this.state.sortMethod} value={this.state.sortOrder} onChange={ev => this.onSortMethodChange(ev, 'sortOrder')}>
         {SORT_ORDERS.map(({ value, label }) => (
           <option key={value} value={value}>{label}</option>
         ))}
@@ -85,10 +84,8 @@ class SortBar extends React.PureComponent {
   }
 }
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    setSortMethod
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  setSortMethod
+};
 
 export default withRouter(connect(null, mapDispatchToProps)(SortBar));

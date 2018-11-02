@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -42,10 +41,8 @@ class SearchByTerm extends React.PureComponent {
   }
 }
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    setSearchTerm
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  setSearchTerm
+};
 
 export default withRouter(connect(null, mapDispatchToProps)(SearchByTerm));

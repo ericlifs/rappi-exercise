@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 
 import FILTERS from 'config/filters';
 import { setFilterFunction } from 'actions/products'
@@ -47,10 +46,8 @@ class PriceFilter extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    setFilterFunction,
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  setFilterFunction
+};
 
 export default withRouter(connect(null, mapDispatchToProps)(PriceFilter));

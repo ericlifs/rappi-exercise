@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { setMenuOpened } from 'actions/ui';
 import { checkoutProducts } from 'actions/cart';
@@ -79,11 +78,9 @@ const mapStateToProps = state => ({
   cartProducts: getProductsInCart(state)
 });
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    checkoutProducts,
-    setMenuOpened
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  checkoutProducts,
+  setMenuOpened
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

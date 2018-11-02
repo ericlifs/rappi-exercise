@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchStaredProducts } from 'actions/products'
@@ -30,10 +29,8 @@ const mapStateToProps = state => ({
   staredProducts: getStaredProducts(state)
 });
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    fetchStaredProducts
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  fetchStaredProducts
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

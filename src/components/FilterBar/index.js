@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -47,12 +46,10 @@ class FilterBar extends React.PureComponent {
   }
 }
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    setSortMethod,
-    setFilterFunction,
-    clearFilters
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  setSortMethod,
+  setFilterFunction,
+  clearFilters
+};
 
 export default withRouter(connect(null, mapDispatchToProps)(FilterBar));

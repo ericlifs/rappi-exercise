@@ -1,5 +1,4 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { addProductToCart } from 'actions/cart';
@@ -12,10 +11,8 @@ const AddToCart = ({ product, addProductToCart }) => (
   </AddToCartWrapper>
 );
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    addProductToCart
-  }, dispatch)
-);
+const mapDispatchToProps = {
+  addProductToCart
+};
 
 export default connect(null, mapDispatchToProps)(AddToCart)
