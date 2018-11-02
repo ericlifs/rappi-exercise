@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { minValue, maxValue, minStock, maxStock, availability } from 'config/filters';
 import { setFilterFunction, setSortMethod, clearFilters } from 'actions/products';
 
-import { FilterBarWrapper, FilterColumn, RangeWrapper, RangeInput, Title, CheckboxInput } from './styled';
+import { FilterBarWrapper, FilterColumn, RangeLabel, RangeWrapper, RangeInput, Title, CheckboxInput } from './styled';
 
 class FilterBar extends React.PureComponent {
   constructor(props) {
@@ -74,10 +74,10 @@ class FilterBar extends React.PureComponent {
   getPriceFilter() {
     return (
       <FilterColumn>
-        Rango de precio
+        <RangeLabel>Precio</RangeLabel>
         <RangeWrapper>
           <RangeInput value={this.state.minPrice} onChange={(ev) => this.onFieldChange(ev.target.value, 'minPrice')}/>
-          Hasta
+          <RangeLabel>Hasta</RangeLabel>
           <RangeInput value={this.state.maxPrice} onChange={(ev) => this.onFieldChange(ev.target.value, 'maxPrice')}/>
         </RangeWrapper>
       </FilterColumn>
@@ -87,10 +87,10 @@ class FilterBar extends React.PureComponent {
   getStockFilter() {
     return (
       <FilterColumn>
-        Cantidad en stock
+        <RangeLabel>Stock</RangeLabel>
         <RangeWrapper>
           <RangeInput value={this.state.minStock} onChange={(ev) => this.onFieldChange(ev.target.value, 'minStock')}/>
-          Hasta
+          <RangeLabel>Hasta</RangeLabel>
           <RangeInput value={this.state.maxStock} onChange={(ev) => this.onFieldChange(ev.target.value, 'maxStock')}/>
         </RangeWrapper>
       </FilterColumn>
@@ -100,7 +100,7 @@ class FilterBar extends React.PureComponent {
   getAvailabilityFilter() {
     return (
       <FilterColumn row>
-        Con disponibilidad
+        Disponibilidad
         <CheckboxInput
           name='availability'
           type='checkbox'

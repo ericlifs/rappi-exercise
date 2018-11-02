@@ -44,8 +44,8 @@ export const FilterBarWrapper = styled.div`
 
 export const FilterColumn = styled.div`
   align-items: center;
+  margin: 0 2%;
   display: flex;
-  flex: 1;
 
   ${mediaQueries.mobile`
     flex-direction: column;
@@ -69,31 +69,6 @@ export const Title = styled.label`
   `}
 `;
 
-export const SearchColumn = styled.div`
-  display: flex;
-  align-items: center;
-
-  ${mediaQueries.mobile`
-    margin-top: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-  `}
-`;
-
-export const FilterControl = styled.select`
-  width: 150px;
-  height: 30px;
-  margin-left: 10px;
-  font-size: 15px;
-
-  ${mediaQueries.mobile`
-    margin: 0;
-    border: 1px solid;
-    margin-top: 15px;
-    width: 98%;
-  `}
-`;
-
 export const RangeWrapper = styled.div`
   display: flex;
   padding: 5px 0;
@@ -101,11 +76,20 @@ export const RangeWrapper = styled.div`
   justify-content: center;
 `;
 
+export const RangeLabel = styled.label`
+  width: 30%;
+  margin: 0 2%;
+  text-align: center;
+  
+  ${mediaQueries.mobile`
+    width: auto;
+  `}
+`;
+
 export const RangeInput = styled.input`
-  width: 150px;
+  width: 30%;
   height: 30px;
   padding: 0 5px;
-  margin-left: 10px;
   font-size: 15px;
 
   ${mediaQueries.mobile`
