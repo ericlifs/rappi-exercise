@@ -6,6 +6,3 @@ export const getMenuOpened = createSelector(
   [getUI],
   ui => ui ? ui.menuOpened : false
 );
-
-
-export default getMenuOpened;

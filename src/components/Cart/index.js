@@ -2,16 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { setMenuOpened } from 'actions/ui';
 import { checkoutProducts } from 'actions/cart';
-
-import getQuantityInCart from 'selectors/getQuantityInCart';
-import getProductsInCart from 'selectors/getProductsInCart';
-import getTotalInCart from 'selectors/getTotalInCart';
+import { getQuantityInCart, getProductsInCart, getTotalInCart } from 'selectors/cart';
 
 import CartProduct from './CartProduct';
 
 import { CartWrapper, CartButtonWrapper, CartList, ProductsList, CheckoutButton } from './styled';
-import {setMenuOpened} from "../../actions/ui";
 
 class Cart extends React.PureComponent {
   constructor(props) {
@@ -76,10 +73,10 @@ class Cart extends React.PureComponent {
   }
 }
 
-const mapStateToProps = ({ cart }) => ({
-  quantity: getQuantityInCart(cart),
-  total: getTotalInCart(cart),
-  cartProducts: getProductsInCart(cart)
+const mapStateToProps = state => ({
+  quantity: getQuantityInCart(state),
+  total: getTotalInCart(state),
+  cartProducts: getProductsInCart(state)
 });
 
 const mapDispatchToProps = dispatch => (
