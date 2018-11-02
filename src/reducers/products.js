@@ -12,7 +12,7 @@ const defaultState = {
   categoryProducts: null,
   staredProducts: null,
   sortMethod: null,
-  searchTerm: null,
+  searchTerm: '',
   sortOrder: null,
   filters: {}
 };

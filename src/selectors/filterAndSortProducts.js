@@ -3,13 +3,14 @@ import { createSelector } from 'reselect'
 const filterAndSortProducts = createSelector(
   products => products,
   products => {
-    const { categoryProducts, sortMethod, sortOrder, filters } = products;
+    const { categoryProducts, sortMethod, sortOrder, filters, searchTerm } = products;
 
     if (!categoryProducts) {
       return null;
     }
 
-    const filteredProducts = categoryProducts.filter(product => Object.values(filters).every(filter => filter(product)));
+    const filteredByTerm = categoryProducts.filter(({ name }) => name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredProducts = filteredByTerm.filter(product => Object.values(filters).every(filter => filter(product)));
 
     if (sortMethod) {
       return [...filteredProducts].sort((first, second) => {

@@ -6,6 +6,7 @@ import filterAndSortProducts from 'selectors/filterAndSortProducts';
 import Product from './Product';
 import SortBar from 'components/SortBar';
 import FilterBar from 'components/FilterBar';
+import SearchByTerm from 'components/SearchByTerm';
 
 import { ProductsListWrapper, ProductsWrapper, NoResults, Title } from './styled';
 
@@ -30,6 +31,7 @@ const ProductsList = ({ products, title, fullwidth, filteredProducts, menuOpened
       <Fragment>
         <FilterBar/>
         <SortBar/>
+        <SearchByTerm/>
       </Fragment>
     )}
     {getProductsContent(products || filteredProducts)}

@@ -3,25 +3,23 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { setSearchTerm, setSortMethod } from 'actions/products';
+import { setSortMethod } from 'actions/products';
 
 import SORT_METHODS from 'config/sortMethods';
 import SORT_ORDERS from 'config/sortOrders';
 
-import { SortBarWrapper, SortColumn, SearchColumn, SortControl, SearchControl, Title } from './styled';
+import { SortBarWrapper, SortColumn, SortControl, Title } from './styled';
 
 class SortBar extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      term: '',
       opened: false,
       sortMethod: '',
       sortOrder: SORT_ORDERS[0].value
     };
 
-    this.onSearchChange = this.onSearchChange.bind(this);
     this.onSortMethodChange = this.onSortMethodChange.bind(this);
     this.onToggleOpened = this.onToggleOpened.bind(this);
   }
@@ -41,12 +39,6 @@ class SortBar extends React.PureComponent {
     this.setState({
       opened: !this.state.opened
     })
-  }
-
-  onSearchChange(event) {
-    this.setState({
-      term: event.target.value
-    }, () => this.props.setSearchTerm(this.state.term));
   }
 
   onSortMethodChange(event, field) {
@@ -88,10 +80,6 @@ class SortBar extends React.PureComponent {
           {this.getSortMethodInput()}
           {this.getSortOrderInput()}
         </SortColumn>
-        <SearchColumn>
-          Buscar producto
-          <SearchControl onChange={this.onSearchChange}/>
-        </SearchColumn>
       </SortBarWrapper>
     );
   }
@@ -99,7 +87,6 @@ class SortBar extends React.PureComponent {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    setSearchTerm,
     setSortMethod
   }, dispatch)
 );
