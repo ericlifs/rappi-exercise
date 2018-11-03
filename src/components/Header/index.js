@@ -2,7 +2,7 @@ import React from 'react';
 
 import Logo from './logo.png';
 import PageBlock from 'components/PageBlock';
-import Cart from 'components/Cart';
+import CartContainer from 'containers/Cart';
 
 import { HeaderWrapper, BaratonLogo } from './styled';
 
@@ -10,7 +10,7 @@ const Header = () => (
   <HeaderWrapper>
     <PageBlock align='center' justify='space-between'>
       <BaratonLogo src={Logo} alt='el-baraton'/>
-      <Cart/>
+      <CartContainer/>
     </PageBlock>
   </HeaderWrapper>
 );

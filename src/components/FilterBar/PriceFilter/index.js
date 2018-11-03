@@ -1,14 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import FILTERS from 'config/filters';
-import { setFilterFunction } from 'actions/products'
 import { maxValue, minValue } from 'helpers/filters';
 
 import { FilterColumn, RangeInput, RangeLabel, RangeWrapper } from '../styled';
 
-class PriceFilter extends React.Component {
+export default class PriceFilter extends React.Component {
   state = {
     [FILTERS.MIN_VALUE]: '',
     [FILTERS.MAX_VALUE]: '',
@@ -45,9 +42,3 @@ class PriceFilter extends React.Component {
     )
   }
 }
-
-const mapDispatchToProps = {
-  setFilterFunction
-};
-
-export default withRouter(connect(null, mapDispatchToProps)(PriceFilter));

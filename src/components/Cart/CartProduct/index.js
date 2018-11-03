@@ -1,7 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-import { addProductToCart, removeProductFromCart, setQuantityOfProduct } from 'actions/cart';
 
 import {
   CartProductColumn,
@@ -12,7 +9,7 @@ import {
   ProductQuantity
 } from './styled';
 
-class CartProduct extends React.PureComponent {
+export default class CartProduct extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -59,11 +56,3 @@ class CartProduct extends React.PureComponent {
     )
   }
 }
-
-const mapDispatchToProps = {
-  addProductToCart,
-  removeProductFromCart,
-  setQuantityOfProduct,
-};
-
-export default connect(null, mapDispatchToProps)(CartProduct);

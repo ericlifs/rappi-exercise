@@ -1,14 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import FILTERS from 'config/filters';
-import { setFilterFunction } from 'actions/products'
 import { availability } from 'helpers/filters';
 
 import { CheckboxInput, FilterColumn } from '../styled';
 
-class AvailabilityFilter extends React.Component {
+export default class AvailabilityFilter extends React.Component {
   constructor(props) {
     super(props);
 
@@ -42,9 +39,3 @@ class AvailabilityFilter extends React.Component {
     )
   }
 }
-
-const mapDispatchToProps = {
-  setFilterFunction
-};
-
-export default withRouter(connect(null, mapDispatchToProps)(AvailabilityFilter));

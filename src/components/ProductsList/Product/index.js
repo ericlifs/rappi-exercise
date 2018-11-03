@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ProductWrapper, ProductName, ProductInfo, ProductSubline } from './styled'
-import AddToCart from 'components/AddToCart';
+import AddToCartContainer from 'containers/AddToCart';
 
 const Product = ({ product }) => (
   <ProductWrapper>
@@ -11,7 +11,7 @@ const Product = ({ product }) => (
       <ProductSubline>{product.available ? 'Disponible' : 'No disponible'}</ProductSubline>
       <ProductSubline>Quedan {product.quantity} en stock</ProductSubline>
     </ProductInfo>
-    {product.available && <AddToCart product={product}/>}
+    {product.available && <AddToCartContainer product={product}/>}
   </ProductWrapper>
 );
 

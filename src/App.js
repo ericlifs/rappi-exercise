@@ -4,8 +4,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 
 import createStore from './store';
-import Home from 'pages/Home';
-import Category from 'pages/Category';
+import HomeContainer from 'containers/Home';
+import CategoryContainer from 'containers/Category';
 import GlobalStyle from 'config/styles';
 
 const { store, persistor } = createStore();
@@ -15,8 +15,8 @@ const App = () => (
     <PersistGate persistor={persistor}>
       <GlobalStyle/>
       <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/category/:id" component={Category}/>
+        <Route exact path="/" component={HomeContainer}/>
+        <Route path="/category/:id" component={CategoryContainer}/>
       </Switch>
     </PersistGate>
   </Provider>

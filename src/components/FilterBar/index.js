@@ -1,15 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
-import { setFilterFunction, setSortMethod, clearFilters } from 'actions/products';
-import PriceFilter from './PriceFilter';
-import AvailabilityFilter from './AvailabilityFilter';
-import StockFilter from './StockFilter';
+import PriceFilterContainer from 'containers/PriceFilter';
+import AvailabilityFilterContainer from 'containers/AvailabilityFilter';
+import StockFilterContainer from 'containers/StockFilter';
 
 import { FilterBarWrapper, Title } from './styled';
 
-class FilterBar extends React.PureComponent {
+export default class FilterBar extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -38,18 +35,10 @@ class FilterBar extends React.PureComponent {
     return (
       <FilterBarWrapper opened={this.state.opened}>
         <Title onClick={this.onToggleOpened}>Filtrar</Title>
-        <AvailabilityFilter/>
-        <PriceFilter/>
-        <StockFilter/>
+        <AvailabilityFilterContainer/>
+        <PriceFilterContainer/>
+        <StockFilterContainer/>
       </FilterBarWrapper>
     );
   }
 }
-
-const mapDispatchToProps = {
-  setSortMethod,
-  setFilterFunction,
-  clearFilters
-};
-
-export default withRouter(connect(null, mapDispatchToProps)(FilterBar));

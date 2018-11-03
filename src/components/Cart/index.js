@@ -1,15 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-import { setMenuOpened } from 'actions/ui';
-import { checkoutProducts } from 'actions/cart';
-import { getQuantityInCart, getProductsInCart, getTotalInCart } from 'selectors/cart';
-
-import CartProduct from './CartProduct';
+import CartProductContainer from 'containers/CartProduct';
 
 import { CartWrapper, CartButtonWrapper, CartList, ProductsList, CheckoutButton } from './styled';
 
-class Cart extends React.PureComponent {
+export default class Cart extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -52,7 +47,7 @@ class Cart extends React.PureComponent {
     return (
       <CartList opened={this.state.opened}>
         <ProductsList>
-          {cartProducts.map(product => <CartProduct key={product.id} product={product}/>)}
+          {cartProducts.map(product => <CartProductContainer key={product.id} product={product}/>)}
         </ProductsList>
         <CheckoutButton onClick={() => checkoutProducts()}>Comprar (${ total.toFixed(2) })</CheckoutButton>
       </CartList>
@@ -71,16 +66,3 @@ class Cart extends React.PureComponent {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  quantity: getQuantityInCart(state),
-  total: getTotalInCart(state),
-  cartProducts: getProductsInCart(state)
-});
-
-const mapDispatchToProps = {
-  checkoutProducts,
-  setMenuOpened
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);

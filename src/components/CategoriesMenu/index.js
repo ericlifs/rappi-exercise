@@ -1,8 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-
-import { setMenuOpened } from 'actions/ui';
 
 import CategoryItem from './CategoryItem';
 
@@ -10,7 +6,7 @@ import info from 'data/categories.json'
 
 import { CategoriesMenuWrapper, CategoriesMenuToggler, CategoriesOptionsWrapper, CategoriesMenuTogglerWrapper } from './styled';
 
-class CategoriesMenu extends React.Component {
+export default class CategoriesMenu extends React.Component {
   constructor(props) {
     super(props);
 
@@ -56,9 +52,3 @@ class CategoriesMenu extends React.Component {
     )
   }
 }
-
-const mapDispatchToProps = {
-  setMenuOpened
-};
-
-export default withRouter(connect(null, mapDispatchToProps)(CategoriesMenu));

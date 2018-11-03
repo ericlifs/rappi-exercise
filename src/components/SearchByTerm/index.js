@@ -1,12 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-
-import { setSearchTerm } from 'actions/products';
 
 import { SearchByTermWrapper, SearchControl } from './styled';
 
-class SearchByTerm extends React.PureComponent {
+export default class SearchByTerm extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -40,9 +36,3 @@ class SearchByTerm extends React.PureComponent {
     );
   }
 }
-
-const mapDispatchToProps = {
-  setSearchTerm
-};
-
-export default withRouter(connect(null, mapDispatchToProps)(SearchByTerm));

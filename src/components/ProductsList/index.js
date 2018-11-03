@@ -1,17 +1,13 @@
 import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-
-import { filterAndSortProducts, getCategoryProducts } from 'selectors/products';
-import { getMenuOpened } from 'selectors/ui';
 
 import Product from './Product';
-import SortBar from 'components/SortBar';
-import FilterBar from 'components/FilterBar';
-import SearchByTerm from 'components/SearchByTerm';
+import SortBarContainer from 'containers/SortBar';
+import FilterBarContainer from 'containers/FilterBar';
+import SearchByTermContainer from 'containers/SearchByTerm';
 
 import { ProductsListWrapper, ProductsWrapper, NoResults, Title } from './styled';
 
-const getProductsContent = products => {
+const ProductsContent = ({ products }) => {
   if (products && products.length) {
     return (
       <ProductsListWrapper>
@@ -25,24 +21,18 @@ const getProductsContent = products => {
   return <NoResults>Perdón, no se encontraron productos</NoResults>;
 };
 
-const ProductsList = ({ products, title, fullwidth, filteredProducts, menuOpened, categoryProducts }) => (
-  <ProductsWrapper fullwidth={fullwidth} menuOpened={menuOpened}>
-    {title && <Title>{title}</Title>}
-    {(categoryProducts || []).length > 0 && (
-      <Fragment>
-        <FilterBar/>
-        <SortBar/>
-        <SearchByTerm/>
-      </Fragment>
-    )}
-    {getProductsContent(products || filteredProducts)}
-  </ProductsWrapper>
-);
-
-const mapStateToProps = state => ({
-  filteredProducts: filterAndSortProducts(state),
-  categoryProducts: getCategoryProducts(state),
-  menuOpened: getMenuOpened(state)
-});
-
-export default connect(mapStateToProps)(ProductsList);
+export default function ProductsList({ products, title, fullwidth, filteredProducts, menuOpened, categoryProducts }) {
+ return (
+   <ProductsWrapper fullwidth={fullwidth} menuOpened={menuOpened}>
+     {title && <Title>{title}</Title>}
+     {(categoryProducts || []).length > 0 && (
+       <Fragment>
+         <FilterBarContainer/>
+         <SortBarContainer/>
+         <SearchByTermContainer/>
+       </Fragment>
+     )}
+     <ProductsContent products={products || filteredProducts}/>
+   </ProductsWrapper>
+ )
+}

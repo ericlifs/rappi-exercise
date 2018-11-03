@@ -1,15 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-
-import { setSortMethod } from 'actions/products';
 
 import SORT_METHODS from 'config/sortMethods';
 import SORT_ORDERS from 'config/sortOrders';
 
 import { SortBarWrapper, SortColumn, SortControl, Title } from './styled';
 
-class SortBar extends React.PureComponent {
+export default class SortBar extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -83,9 +79,3 @@ class SortBar extends React.PureComponent {
     );
   }
 }
-
-const mapDispatchToProps = {
-  setSortMethod
-};
-
-export default withRouter(connect(null, mapDispatchToProps)(SortBar));
