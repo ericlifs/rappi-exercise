@@ -9,4 +9,7 @@ export const AddToCartWrapper = styled.button`
   padding: 10px;
   width: 100%;
   font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

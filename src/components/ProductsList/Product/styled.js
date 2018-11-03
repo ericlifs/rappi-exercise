@@ -30,6 +30,9 @@ export const ProductInfo = styled.div`
 
 export const ProductSubline = styled.label`
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   ${mediaQueries.mobile`
     font-size: 16px;
