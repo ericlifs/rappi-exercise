@@ -4,7 +4,7 @@ import { setMenuOpened } from 'actions/ui'
 import { checkoutProducts } from 'actions/cart'
 import { getQuantityInCart, getProductsInCart, getTotalInCart } from 'selectors/cart'
 
-import Cart from 'components/Cart/index'
+import Cart from 'components/Cart'
 
 const mapStateToProps = state => ({
   quantity: getQuantityInCart(state),

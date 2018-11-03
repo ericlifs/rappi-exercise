@@ -2,7 +2,7 @@ import React from 'react'
 
 import Page from 'components/Page'
 import CategoriesMenuContainer from 'containers/CategoriesMenu'
-import ProductsList from 'components/ProductsList'
+import ProductsListContainer from 'containers/ProductsList'
 
 export default class Home extends React.Component {
   componentDidMount() {
@@ -15,7 +15,7 @@ export default class Home extends React.Component {
     return (
       <Page direction="row" withHeader>
         <CategoriesMenuContainer />
-        <ProductsList products={staredProducts} title="Productos destacados" fullwidth />
+        <ProductsListContainer products={staredProducts} title="Productos destacados" fullwidth />
       </Page>
     )
   }

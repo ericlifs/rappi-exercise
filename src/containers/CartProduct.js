@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addProductToCart, removeProductFromCart, setQuantityOfProduct } from 'actions/cart'
 
-import CartProduct from 'components/Cart/CartProduct/index'
+import CartProduct from 'components/Cart/CartProduct'
 
 const CartProductContainer = props => <CartProduct {...props} />
 

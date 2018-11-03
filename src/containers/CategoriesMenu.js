@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { setMenuOpened } from 'actions/ui'
 import CategoriesMenu from 'components/CategoriesMenu'
+import { setMenuOpened } from 'actions/ui'
 
 const mapDispatchToProps = {
   setMenuOpened
