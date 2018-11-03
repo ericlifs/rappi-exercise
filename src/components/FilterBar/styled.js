@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import mediaQueries from 'components/MediaQueries';
+import styled, { css } from 'styled-components'
+import mediaQueries from 'components/MediaQueries'
 
 export const FilterBarWrapper = styled.div`
   background: ${({ theme }) => theme.colors.zumthor};
@@ -20,10 +20,10 @@ export const FilterBarWrapper = styled.div`
     bottom: 0;
     width: calc((100vw - 1200px) / 2);
     transform: translateX(100%);
-    
+
     ${mediaQueries.mobile`
       content: none;
-    `}
+    `};
   }
 
   ${mediaQueries.mobile`
@@ -34,13 +34,15 @@ export const FilterBarWrapper = styled.div`
     padding: 20px;
     height: auto;
 
-    ${({ opened }) => !opened && css`
-      ${FilterColumn} {
-        display: none;
-      }
-    `}
-  `}
-`;
+    ${({ opened }) =>
+      !opened &&
+      css`
+        ${FilterColumn} {
+          display: none;
+        }
+      `}
+  `};
+`
 
 export const FilterColumn = styled.div`
   align-items: center;
@@ -51,12 +53,14 @@ export const FilterColumn = styled.div`
     flex-direction: column;
     margin: 20px 0;
     
-    ${({ row }) => row && css`
-      justify-content: center;
-      flex-direction: row;
-    `}
-  `}
-`;
+    ${({ row }) =>
+      row &&
+      css`
+        justify-content: center;
+        flex-direction: row;
+      `}
+  `};
+`
 
 export const Title = styled.label`
   pointer-events: none;
@@ -66,25 +70,25 @@ export const Title = styled.label`
     pointer-events: all;
     justify-content: center;
     display: flex;
-  `}
-`;
+  `};
+`
 
 export const RangeWrapper = styled.div`
   display: flex;
   padding: 5px 0;
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const RangeLabel = styled.label`
   width: 30%;
   margin: 0 2%;
   text-align: center;
-  
+
   ${mediaQueries.mobile`
     width: auto;
-  `}
-`;
+  `};
+`
 
 export const RangeInput = styled.input`
   width: 30%;
@@ -97,9 +101,9 @@ export const RangeInput = styled.input`
     margin: 0 10px;
     width: 20%;
     border-radius: 3px;
-  `}
-`;
+  `};
+`
 
 export const CheckboxInput = styled.input`
   margin-left: 10px;
-`;
+`

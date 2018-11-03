@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const AddToCartWrapper = styled.button`
   background: ${({ theme }) => theme.colors.chambray};
@@ -12,4 +12,4 @@ export const AddToCartWrapper = styled.button`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-`;
+`

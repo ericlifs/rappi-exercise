@@ -7,6 +7,6 @@ const SORT_ORDERS = [
     value: 'desc',
     label: 'Descendente'
   }
-];
+]
 
-export default SORT_ORDERS;
+export default SORT_ORDERS

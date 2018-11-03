@@ -1,10 +1,13 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import Category from 'pages/Category';
-import { fetchProductsByCategory } from 'actions/products';
+import Category from 'pages/Category'
+import { fetchProductsByCategory } from 'actions/products'
 
 const mapDispatchToProps = {
   fetchProductsByCategory
-};
+}
 
-export default connect(null, mapDispatchToProps)(Category);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Category)

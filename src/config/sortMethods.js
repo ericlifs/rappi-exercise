@@ -11,6 +11,6 @@ const SORT_METHODS = [
     value: 'quantity',
     label: 'Cantidad'
   }
-];
+]
 
-export default SORT_METHODS;
+export default SORT_METHODS

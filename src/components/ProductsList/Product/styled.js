@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import mediaQueries from 'components/MediaQueries';
+import styled from 'styled-components'
+import mediaQueries from 'components/MediaQueries'
 
 export const ProductWrapper = styled.div`
   width: 20%;
@@ -20,13 +20,13 @@ export const ProductWrapper = styled.div`
     &:last-child {
       margin-bottom: 0;
     }
-  `}
-`;
+  `};
+`
 
 export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
-`;
+`
 
 export const ProductSubline = styled.label`
   font-size: 14px;
@@ -36,8 +36,8 @@ export const ProductSubline = styled.label`
 
   ${mediaQueries.mobile`
     font-size: 16px;
-  `}
-`;
+  `};
+`
 
 export const ProductName = styled(ProductSubline)`
   font-size: 16px;
@@ -46,6 +46,5 @@ export const ProductName = styled(ProductSubline)`
 
   ${mediaQueries.mobile`
     font-size: 18px;
-  `}
-`;
-
+  `};
+`

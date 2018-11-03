@@ -1,33 +1,37 @@
-import App from './App';
-import React from 'react';
-import { StaticRouter } from 'react-router-dom';
-import express from 'express';
-import { ServerStyleSheet, ThemeProvider } from 'styled-components';
-import { renderToString } from 'react-dom/server';
+import App from './App'
+import React from 'react'
+import { StaticRouter } from 'react-router-dom'
+import express from 'express'
+import { ServerStyleSheet, ThemeProvider } from 'styled-components'
+import { renderToString } from 'react-dom/server'
 
-import theme from 'config/theme';
+import theme from 'config/theme'
 
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
-const server = express();
+const server = express()
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
-    const context = {};
+    const context = {}
     const markup = renderToString(
       <StaticRouter context={context} location={req.url}>
         <ThemeProvider theme={theme}>
-          <App/>
+          <App />
         </ThemeProvider>
       </StaticRouter>
-    );
+    )
 
-    const sheet = new ServerStyleSheet();
-    sheet.collectStyles(<App/>);
+    const sheet = new ServerStyleSheet()
+    sheet.collectStyles(
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    )
 
     if (context.url) {
-      res.redirect(context.url);
+      res.redirect(context.url)
     } else {
       res.status(200).send(
         `<!doctype html>
@@ -37,11 +41,7 @@ server
                 <meta charset="utf-8" />
                 <title>El Baratón</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                ${
-                  assets.client.css
-                    ? `<link rel="stylesheet" href="${assets.client.css}">`
-                    : ''
-                }
+                ${assets.client.css ? `<link rel="stylesheet" href="${assets.client.css}">` : ''}
                 ${
                   process.env.NODE_ENV === 'production'
                     ? `<script src="${assets.client.js}" defer></script>`
@@ -53,8 +53,8 @@ server
                 <div id="root">${markup}</div>
             </body>
         </html>`
-      );
+      )
     }
-  });
+  })
 
-export default server;
+export default server

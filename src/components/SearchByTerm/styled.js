@@ -1,5 +1,5 @@
-import styled  from 'styled-components';
-import mediaQueries from 'components/MediaQueries';
+import styled from 'styled-components'
+import mediaQueries from 'components/MediaQueries'
 
 export const SearchByTermWrapper = styled.div`
   display: flex;
@@ -17,8 +17,8 @@ export const SearchByTermWrapper = styled.div`
     display: inline-block;
     padding: 20px;
     height: auto;
-  `}
-`;
+  `};
+`
 
 export const SearchControl = styled.input`
   width: 150px;
@@ -33,5 +33,5 @@ export const SearchControl = styled.input`
     width: 98%;
     margin-top: 10px;
     border-radius: 3px;
-  `}
-`;
+  `};
+`

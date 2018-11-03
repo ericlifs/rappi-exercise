@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-import Logo from './logo.png';
-import PageBlock from 'components/PageBlock';
-import CartContainer from 'containers/Cart';
+import Logo from './logo.png'
+import PageBlock from 'components/PageBlock'
+import CartContainer from 'containers/Cart'
 
-import { HeaderWrapper, BaratonLogo } from './styled';
+import { HeaderWrapper, BaratonLogo } from './styled'
 
 const Header = () => (
   <HeaderWrapper>
-    <PageBlock align='center' justify='space-between'>
-      <BaratonLogo src={Logo} alt='el-baraton'/>
-      <CartContainer/>
+    <PageBlock align="center" justify="space-between">
+      <BaratonLogo src={Logo} alt="el-baraton" />
+      <CartContainer />
     </PageBlock>
   </HeaderWrapper>
-);
+)
 
-export default Header;
+export default Header

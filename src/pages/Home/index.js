@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import Page from 'components/Page';
-import CategoriesMenuContainer from 'containers/CategoriesMenu';
-import ProductsList from 'components/ProductsList';
+import Page from 'components/Page'
+import CategoriesMenuContainer from 'containers/CategoriesMenu'
+import ProductsList from 'components/ProductsList'
 
 export default class Home extends React.Component {
   componentDidMount() {
@@ -10,12 +10,12 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const { staredProducts } = this.props;
+    const { staredProducts } = this.props
 
     return (
-      <Page direction='row' withHeader>
-        <CategoriesMenuContainer/>
-        <ProductsList products={staredProducts} title='Productos destacados' fullwidth/>
+      <Page direction="row" withHeader>
+        <CategoriesMenuContainer />
+        <ProductsList products={staredProducts} title="Productos destacados" fullwidth />
       </Page>
     )
   }

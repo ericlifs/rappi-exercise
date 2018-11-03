@@ -52,6 +52,6 @@ const theme = {
     athensGray: '#FAFBFC',
     ghost: '#c6cbd4'
   }
-};
+}
 
 export default theme

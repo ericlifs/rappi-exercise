@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import mediaQueries from 'components/MediaQueries';
+import styled, { css } from 'styled-components'
+import mediaQueries from 'components/MediaQueries'
 
 export const SortBarWrapper = styled.div`
   background: ${({ theme }) => theme.colors.zumthor};
@@ -20,10 +20,10 @@ export const SortBarWrapper = styled.div`
     bottom: 0;
     width: calc((100vw - 1200px) / 2);
     transform: translateX(100%);
-    
+
     ${mediaQueries.mobile`
       content: none;
-    `}
+    `};
   }
 
   ${mediaQueries.mobile`
@@ -34,14 +34,15 @@ export const SortBarWrapper = styled.div`
     padding: 20px;
     height: auto;
 
-    ${({ opened }) => !opened && css`
-      ${SearchColumn},
-      ${SortControl} {
-        display: none;
-      }
-    `}
-  `}
-`;
+    ${({ opened }) =>
+      !opened &&
+      css`
+        ${SearchColumn}, ${SortControl} {
+          display: none;
+        }
+      `}
+  `};
+`
 
 export const SortColumn = styled.div`
   align-items: center;
@@ -50,8 +51,8 @@ export const SortColumn = styled.div`
 
   ${mediaQueries.mobile`
     flex-direction: column;
-  `}
-`;
+  `};
+`
 
 export const Title = styled.label`
   pointer-events: none;
@@ -59,8 +60,8 @@ export const Title = styled.label`
   ${mediaQueries.mobile`
     text-transform: uppercase;
     pointer-events: all;
-  `}
-`;
+  `};
+`
 
 export const SearchColumn = styled.div`
   display: flex;
@@ -70,8 +71,8 @@ export const SearchColumn = styled.div`
     margin-top: 10px;
     flex-direction: column;
     align-items: flex-start;
-  `}
-`;
+  `};
+`
 
 export const SortControl = styled.select`
   width: 150px;
@@ -84,8 +85,8 @@ export const SortControl = styled.select`
     border: 1px solid;
     margin-top: 15px;
     width: 98%;
-  `}
-`;
+  `};
+`
 
 export const SearchControl = styled.input`
   width: 150px;
@@ -99,5 +100,5 @@ export const SearchControl = styled.input`
     margin: 0;
     width: 98%;
     border-radius: 3px;
-  `}
-`;
+  `};
+`

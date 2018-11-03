@@ -1,23 +1,23 @@
-import React from 'react';
+import React from 'react'
 
 import {
   CartProductColumn,
   CartProductInfo,
-  CartProductOperation,
+  Operation,
   CartProductQuantity,
   CartProductWrapper,
   ProductQuantity
-} from './styled';
+} from './styled'
 
 export default class CartProduct extends React.PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       quantity: 0
-    };
+    }
 
-    this.handleQuantityChange = this.handleQuantityChange.bind(this);
+    this.handleQuantityChange = this.handleQuantityChange.bind(this)
   }
 
   static getDerivedStateFromProps(props) {
@@ -27,30 +27,30 @@ export default class CartProduct extends React.PureComponent {
   }
 
   handleQuantityChange(event) {
-    const { product, removeProductFromCart, setQuantityOfProduct } = this.props;
-    const quantity = Number(event.target.value);
+    const { product, removeProductFromCart, setQuantityOfProduct } = this.props
+    const quantity = Number(event.target.value)
 
     if (!quantity) {
-      return removeProductFromCart(product);
+      return removeProductFromCart(product)
     }
 
-    return setQuantityOfProduct(product, quantity);
+    return setQuantityOfProduct(product, quantity)
   }
 
   render() {
-    const { product } = this.props;
-    const { quantity } = this.state;
+    const { product, addProductToCart, removeProductFromCart } = this.props
+    const { quantity } = this.state
 
     return (
       <CartProductWrapper>
         <CartProductColumn>
-          <CartProductInfo >{product.name}</CartProductInfo>
+          <CartProductInfo>{product.name}</CartProductInfo>
           <CartProductInfo>${product.price}</CartProductInfo>
         </CartProductColumn>
         <CartProductQuantity>
-          <CartProductOperation onClick={() => this.props.addProductToCart(product)}>+</CartProductOperation>
-          <ProductQuantity type='number' value={quantity} onChange={this.handleQuantityChange}/>
-          <CartProductOperation onClick={() => this.props.removeProductFromCart(product)}>-</CartProductOperation>
+          <Operation onClick={() => addProductToCart(product)}>+</Operation>
+          <ProductQuantity type="number" value={quantity} onChange={this.handleQuantityChange} />
+          <Operation onClick={() => removeProductFromCart(product)}>-</Operation>
         </CartProductQuantity>
       </CartProductWrapper>
     )

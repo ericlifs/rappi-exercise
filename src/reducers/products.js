@@ -1,12 +1,19 @@
 import { handleActions } from 'redux-actions'
-import { fetchProductsByCategory, setSearchTerm, setSortMethod, fetchStaredProducts, setFilterFunction, clearFilters } from 'actions/products'
+import {
+  fetchProductsByCategory,
+  setSearchTerm,
+  setSortMethod,
+  fetchStaredProducts,
+  setFilterFunction,
+  clearFilters
+} from 'actions/products'
 
 import info from 'data/products.json'
 
 info.products.forEach(product => {
-  product.price = product.price.replace('$', '');
-  product.price = product.price.replace(',', '.');
-});
+  product.price = product.price.replace('$', '')
+  product.price = product.price.replace(',', '.')
+})
 
 const defaultState = {
   categoryProducts: null,
@@ -15,12 +22,12 @@ const defaultState = {
   searchTerm: '',
   sortOrder: null,
   filters: {}
-};
+}
 
 const reducer = handleActions(
   {
     [fetchProductsByCategory]: (state, { payload: { sublevelId } }) => {
-      const categoryProducts = info.products.filter(product => product.sublevel_id === sublevelId);
+      const categoryProducts = info.products.filter(product => product.sublevel_id === sublevelId)
 
       return {
         ...state,
@@ -36,23 +43,23 @@ const reducer = handleActions(
       sortMethod,
       sortOrder
     }),
-    [fetchStaredProducts]: (state, { payload: { quantity }}) => ({
+    [fetchStaredProducts]: (state, { payload: { quantity } }) => ({
       ...state,
-      staredProducts: info.products.sort(() => .5 - Math.random()).slice(0, quantity)
+      staredProducts: info.products.sort(() => 0.5 - Math.random()).slice(0, quantity)
     }),
-    [setFilterFunction]: (state, { payload: { name, filter }}) => ({
+    [setFilterFunction]: (state, { payload: { name, filter } }) => ({
       ...state,
       filters: {
         ...state.filters,
         [name]: filter
       }
     }),
-    [clearFilters]: (state) => ({
+    [clearFilters]: state => ({
       ...state,
       filters: {}
     })
   },
   defaultState
-);
+)
 
 export default reducer

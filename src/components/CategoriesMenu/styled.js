@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import mediaQueries from 'components/MediaQueries';
+import styled, { css } from 'styled-components'
+import mediaQueries from 'components/MediaQueries'
 
 export const CategoriesMenuToggler = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.alto};
@@ -17,8 +17,8 @@ export const CategoriesMenuToggler = styled.div`
     position: absolute;
     right: 50%;
     transition: right ease-in-out 750ms;
-  `}
-`;
+  `};
+`
 
 export const CategoriesOptionsWrapper = styled.div`
   display: flex;
@@ -27,8 +27,8 @@ export const CategoriesOptionsWrapper = styled.div`
 
   ${mediaQueries.mobile`
     overflow: hidden;
-  `}
-`;
+  `};
+`
 
 export const CategoriesMenuWrapper = styled.div`
   background: ${({ theme }) => theme.colors.athensGray};
@@ -52,33 +52,37 @@ export const CategoriesMenuWrapper = styled.div`
 
     ${mediaQueries.mobile`
       top: 50px;
-    `}
+    `};
   }
 
   ${mediaQueries.mobile`
-    ${({ opened }) => opened && css`
-      width: 100%;
-
-      ${CategoriesMenuToggler} {
-        right: 10px;
-      }
-
-      ${CategoriesOptionsWrapper} {
+    ${({ opened }) =>
+      opened &&
+      css`
         width: 100%;
-      }
-    `}
 
-    ${({opened}) => !opened && css`
-      ${CategoriesMenuToggler} {
-        transform: translateX(50%);
-      }
+        ${CategoriesMenuToggler} {
+          right: 10px;
+        }
 
-      ${CategoriesOptionsWrapper} {
-        width: 0;
-      }
-    `}
-  `}
-`;
+        ${CategoriesOptionsWrapper} {
+          width: 100%;
+        }
+      `}
+
+    ${({ opened }) =>
+      !opened &&
+      css`
+        ${CategoriesMenuToggler} {
+          transform: translateX(50%);
+        }
+
+        ${CategoriesOptionsWrapper} {
+          width: 0;
+        }
+      `}
+  `};
+`
 
 export const CategoriesMenuTogglerWrapper = styled.div`
   justify-content: center;
@@ -86,8 +90,8 @@ export const CategoriesMenuTogglerWrapper = styled.div`
   margin: 0 auto;
   display: flex;
   width: 95%;
-`;
+`
 
 export const CategoryTitle = styled.label`
   font-size: 18px;
-`;
+`

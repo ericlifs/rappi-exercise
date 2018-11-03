@@ -1,38 +1,45 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from 'react'
 
-import Product from './Product';
-import SortBarContainer from 'containers/SortBar';
-import FilterBarContainer from 'containers/FilterBar';
-import SearchByTermContainer from 'containers/SearchByTerm';
+import Product from './Product'
+import SortBarContainer from 'containers/SortBar'
+import FilterBarContainer from 'containers/FilterBar'
+import SearchByTermContainer from 'containers/SearchByTerm'
 
-import { ProductsListWrapper, ProductsWrapper, NoResults, Title } from './styled';
+import { ProductsListWrapper, ProductsWrapper, NoResults, Title } from './styled'
 
 const ProductsContent = ({ products }) => {
   if (products && products.length) {
     return (
       <ProductsListWrapper>
         {products.map(product => (
-          <Product key={product.id} product={product}/>
+          <Product key={product.id} product={product} />
         ))}
       </ProductsListWrapper>
     )
   }
 
-  return <NoResults>Perdón, no se encontraron productos</NoResults>;
-};
+  return <NoResults>Perdón, no se encontraron productos</NoResults>
+}
 
-export default function ProductsList({ products, title, fullwidth, filteredProducts, menuOpened, categoryProducts }) {
- return (
-   <ProductsWrapper fullwidth={fullwidth} menuOpened={menuOpened}>
-     {title && <Title>{title}</Title>}
-     {(categoryProducts || []).length > 0 && (
-       <Fragment>
-         <FilterBarContainer/>
-         <SortBarContainer/>
-         <SearchByTermContainer/>
-       </Fragment>
-     )}
-     <ProductsContent products={products || filteredProducts}/>
-   </ProductsWrapper>
- )
+export default function ProductsList({
+  products,
+  title,
+  fullwidth,
+  filteredProducts,
+  menuOpened,
+  categoryProducts
+}) {
+  return (
+    <ProductsWrapper fullwidth={fullwidth} menuOpened={menuOpened}>
+      {title && <Title>{title}</Title>}
+      {(categoryProducts || []).length > 0 && (
+        <Fragment>
+          <FilterBarContainer />
+          <SortBarContainer />
+          <SearchByTermContainer />
+        </Fragment>
+      )}
+      <ProductsContent products={products || filteredProducts} />
+    </ProductsWrapper>
+  )
 }

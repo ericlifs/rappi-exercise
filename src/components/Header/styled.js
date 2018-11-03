@@ -11,12 +11,12 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   display: flex;
   flex: 1;
-  
+
   ${mediaQueries.mobile`
     height: 50px;
     padding: 0 20px;
-  `}
-`;
+  `};
+`
 
 export const BaratonLogo = styled.img`
   width: 175px;
@@ -25,5 +25,5 @@ export const BaratonLogo = styled.img`
   ${mediaQueries.mobile`
     width: 105px;
     height: 25px;
-  `}
-`;
+  `};
+`

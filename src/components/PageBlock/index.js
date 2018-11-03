@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const PageBlock = styled.div`
   ${({ align }) => align && `align-items: ${align};`}
@@ -12,6 +12,6 @@ const PageBlock = styled.div`
   height: 100%;
   width: 100%;
   overflow: visible;
-`;
+`
 
-export default PageBlock;
+export default PageBlock

@@ -1,13 +1,13 @@
-import styled, { css } from 'styled-components';
-import mediaQueries from 'components/MediaQueries';
+import styled, { css } from 'styled-components'
+import mediaQueries from 'components/MediaQueries'
 
 export const CartWrapper = styled.div`
   position: relative;
 
   ${mediaQueries.mobile`
     position: static;
-  `}
-`;
+  `};
+`
 
 export const CartButtonWrapper = styled.button`
   background: ${({ theme }) => theme.colors.chambray};
@@ -22,24 +22,26 @@ export const CartButtonWrapper = styled.button`
 
   ${mediaQueries.mobile`
     font-size: 16px;
-  `}
-`;
+  `};
+`
 
 export const ProductsList = styled.div`
   height: 90%;
   overflow-y: scroll;
-`;
+`
 
 export const CartList = styled.div`
-  ${({ opened }) => opened && css`
-    height: 350px;
-    opacity: 1;
-  `}
-
-  ${({opened}) => !opened && css`
-    height: 0;
-    opacity: 0;
-  `}
+  ${({ opened }) =>
+    opened &&
+    css`
+      height: 350px;
+      opacity: 1;
+    `} ${({ opened }) =>
+    !opened &&
+    css`
+      height: 0;
+      opacity: 0;
+    `}
 
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.08);
   transition: all ease-in-out 750ms;
@@ -60,11 +62,13 @@ export const CartList = styled.div`
     left: 0;
     overflow: hidden;
 
-    ${({ opened }) => opened && css`
-      height: calc(100vh - 50px);
-    `}
-  `}
-`;
+    ${({ opened }) =>
+      opened &&
+      css`
+        height: calc(100vh - 50px);
+      `}
+  `};
+`
 
 export const CheckoutButton = styled.button`
   background: ${({ theme }) => theme.colors.chambray};
@@ -75,4 +79,4 @@ export const CheckoutButton = styled.button`
   padding: 10px;
   width: 100%;
   font-size: 15px;
-`;
+`

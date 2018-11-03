@@ -3,7 +3,7 @@ import { setMenuOpened } from 'actions/ui'
 
 const defaultState = {
   menuOpened: false
-};
+}
 
 const reducer = handleActions(
   {
@@ -13,6 +13,6 @@ const reducer = handleActions(
     })
   },
   defaultState
-);
+)
 
 export default reducer
