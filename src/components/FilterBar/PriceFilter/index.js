@@ -5,10 +5,19 @@ import { maxValue, minValue } from 'helpers/filters'
 
 import { FilterColumn, RangeInput, RangeLabel, RangeWrapper } from '../styled'
 
-export default class PriceFilter extends React.Component {
+export default class PriceFilter extends React.PureComponent {
   state = {
     [FILTERS.MIN_VALUE]: '',
     [FILTERS.MAX_VALUE]: ''
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({
+        [FILTERS.MIN_VALUE]: '',
+        [FILTERS.MAX_VALUE]: ''
+      })
+    }
   }
 
   onFieldChange(field, ev) {

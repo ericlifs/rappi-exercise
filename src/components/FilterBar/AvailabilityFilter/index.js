@@ -5,15 +5,17 @@ import { availability } from 'helpers/filters'
 
 import { CheckboxInput, FilterColumn } from '../styled'
 
-export default class AvailabilityFilter extends React.Component {
-  constructor(props) {
-    super(props)
+export default class AvailabilityFilter extends React.PureComponent {
+  state = {
+    available: false
+  }
 
-    this.state = {
-      available: false
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({
+        available: false
+      })
     }
-
-    this.onFieldChange = this.onFieldChange.bind(this)
   }
 
   onFieldChange(ev) {
@@ -33,7 +35,7 @@ export default class AvailabilityFilter extends React.Component {
           name="availability"
           type="checkbox"
           checked={this.state.available}
-          onChange={this.onFieldChange}
+          onChange={this.onFieldChange.bind(this)}
         />
       </FilterColumn>
     )

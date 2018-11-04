@@ -1,9 +1,13 @@
+import React from 'react'
+
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import FilterBar from 'components/FilterBar'
 
 import { setFilterFunction, setSortMethod, clearFilters } from 'actions/products'
+
+const FilterBarContainer = props => <FilterBar {...props} />
 
 const mapDispatchToProps = {
   setSortMethod,
@@ -15,5 +19,5 @@ export default withRouter(
   connect(
     null,
     mapDispatchToProps
-  )(FilterBar)
+  )(FilterBarContainer)
 )

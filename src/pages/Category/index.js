@@ -1,13 +1,10 @@
 import React from 'react'
-import { connect } from 'react-redux'
-
-import { fetchProductsByCategory } from 'actions/products'
 
 import Page from 'components/Page'
 import CategoriesMenuContainer from 'containers/CategoriesMenu'
 import ProductsListContainer from 'containers/ProductsList'
 
-class Category extends React.PureComponent {
+export default class Category extends React.PureComponent {
   componentDidMount() {
     const { id } = this.props.match.params
 
@@ -29,12 +26,3 @@ class Category extends React.PureComponent {
     )
   }
 }
-
-const mapDispatchToProps = {
-  fetchProductsByCategory
-}
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Category)

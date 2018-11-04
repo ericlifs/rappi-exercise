@@ -6,13 +6,13 @@ import CartContainer from 'containers/Cart'
 
 import { HeaderWrapper, BaratonLogo } from './styled'
 
-const Header = () => (
-  <HeaderWrapper>
-    <PageBlock align="center" justify="space-between">
-      <BaratonLogo src={Logo} alt="el-baraton" />
-      <CartContainer />
-    </PageBlock>
-  </HeaderWrapper>
-)
-
-export default Header
+export default function Header() {
+  return (
+    <HeaderWrapper>
+      <PageBlock align="center" justify="space-between">
+        <BaratonLogo src={Logo} alt="el-baraton" />
+        <CartContainer />
+      </PageBlock>
+    </HeaderWrapper>
+  )
+}

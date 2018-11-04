@@ -11,7 +11,7 @@ import {
   CategoriesMenuTogglerWrapper
 } from './styled'
 
-export default class CategoriesMenu extends React.Component {
+export default class CategoriesMenu extends React.PureComponent {
   constructor(props) {
     super(props)
 
