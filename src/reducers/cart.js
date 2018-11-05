@@ -18,9 +18,18 @@ const reducer = handleActions(
       if (productInCart) {
         const products = state.products.map(cartProduct => {
           if (cartProduct.id === product.id) {
+            const quantity = ++cartProduct.quantity
+
+            if (quantity > cartProduct.stock) {
+              return {
+                ...cartProduct,
+                quantity: cartProduct.stock
+              }
+            }
+
             return {
               ...cartProduct,
-              quantity: ++cartProduct.quantity
+              quantity
             }
           }
 
@@ -33,7 +42,7 @@ const reducer = handleActions(
       }
 
       return {
-        products: [...state.products, { ...product, quantity: 1 }]
+        products: [...state.products, { ...product, stock: product.quantity, quantity: 1 }]
       }
     },
     [removeProductFromCart]: (state, { payload: { product } }) => {

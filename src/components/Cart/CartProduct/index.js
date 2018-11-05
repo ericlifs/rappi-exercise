@@ -34,7 +34,9 @@ export default class CartProduct extends React.PureComponent {
       return removeProductFromCart(product)
     }
 
-    return setQuantityOfProduct(product, quantity)
+    const quantityToAdd = quantity > product.stock ? product.stock : quantity
+
+    return setQuantityOfProduct(product, quantityToAdd)
   }
 
   render() {
