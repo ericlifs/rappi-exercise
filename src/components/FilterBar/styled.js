@@ -80,12 +80,29 @@ export const RangeWrapper = styled.div`
   justify-content: center;
 `
 
+export const InputLabel = styled.label`
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.chambray};
+
+  ${mediaQueries.mobile`
+    font-weight: normal;
+    color: ${({ theme }) => theme.colors.black};
+  `};
+`
+
 export const RangeLabel = styled.label`
   width: 30%;
   margin: 0 2%;
   text-align: center;
 
-  ${mediaQueries.mobile`
+  ${({ bold }) =>
+    bold &&
+    css`
+      font-weight: bold;
+      color: ${({ theme }) => theme.colors.chambray};
+    `} ${mediaQueries.mobile`
+    font-weight: normal;
+    color: ${({ theme }) => theme.colors.black};
     width: auto;
   `};
 `

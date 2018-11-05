@@ -39,8 +39,9 @@ export default class PriceFilter extends React.PureComponent {
   render() {
     return (
       <FilterColumn>
-        <RangeLabel>Precio</RangeLabel>
+        <RangeLabel bold>Precio</RangeLabel>
         <RangeWrapper>
+          <RangeLabel>Desde</RangeLabel>
           <RangeInput
             value={this.state[FILTERS.MIN_VALUE]}
             onChange={this.onFieldChange.bind(this, FILTERS.MIN_VALUE)}

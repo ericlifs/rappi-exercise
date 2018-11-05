@@ -39,8 +39,9 @@ export default class StockFilter extends React.PureComponent {
   render() {
     return (
       <FilterColumn>
-        <RangeLabel>Stock</RangeLabel>
+        <RangeLabel bold>Stock</RangeLabel>
         <RangeWrapper>
+          <RangeLabel>Desde</RangeLabel>
           <RangeInput
             value={this.state[FILTERS.MIN_STOCK]}
             onChange={this.onFieldChange.bind(this, FILTERS.MIN_STOCK)}

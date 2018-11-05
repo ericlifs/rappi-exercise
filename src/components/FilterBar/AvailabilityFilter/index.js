@@ -3,7 +3,7 @@ import React from 'react'
 import FILTERS from 'config/filters'
 import { availability } from 'helpers/filters'
 
-import { CheckboxInput, FilterColumn } from '../styled'
+import { CheckboxInput, FilterColumn, InputLabel } from '../styled'
 
 export default class AvailabilityFilter extends React.PureComponent {
   state = {
@@ -29,7 +29,7 @@ export default class AvailabilityFilter extends React.PureComponent {
   render() {
     return (
       <FilterColumn row>
-        Disponibilidad
+        <InputLabel>Disponibilidad</InputLabel>
         <CheckboxInput
           name="availability"
           type="checkbox"
