@@ -1,8 +1,8 @@
 import React from 'react'
 
 import Page from 'components/Page'
-import CategoriesMenuContainer from 'containers/CategoriesMenu'
-import ProductsListContainer from 'containers/ProductsList'
+import CategoriesMenuContainer from 'components/containers/CategoriesMenu'
+import ProductsListContainer from 'components/containers/ProductsList'
 
 export default class Category extends React.PureComponent {
   componentDidMount() {

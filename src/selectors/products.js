@@ -20,6 +20,7 @@ export const filterAndSortProducts = createSelector(
     const filteredByTerm = categoryProducts.filter(({ name }) =>
       name.toLowerCase().includes(searchTerm.toLowerCase())
     )
+
     const filteredProducts = filteredByTerm.filter(product =>
       Object.values(filters).every(filter => filter(product))
     )
@@ -37,3 +38,7 @@ export const filterAndSortProducts = createSelector(
     return filteredProducts
   }
 )
+
+export const getFiltersValues = createSelector([getProducts], products => products.filtersValues)
+
+export const getSearchTerm = createSelector([getProducts], products => products.searchTerm)

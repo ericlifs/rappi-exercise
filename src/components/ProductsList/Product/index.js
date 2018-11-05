@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ProductWrapper, ProductName, ProductInfo, ProductSubline } from './styled'
-import AddToCartContainer from 'containers/AddToCart'
+import AddToCartContainer from 'components/containers/AddToCart'
 
 export default function Product({ product }) {
   return (

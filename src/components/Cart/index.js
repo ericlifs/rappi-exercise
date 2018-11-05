@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CartProductContainer from 'containers/CartProduct'
+import CartProductContainer from 'components/containers/CartProduct'
 
 import { CartWrapper, CartButtonWrapper, CartList, ProductsList, CheckoutButton } from './styled'
 

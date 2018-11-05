@@ -47,16 +47,22 @@ const reducer = handleActions(
       ...state,
       staredProducts: info.products.sort(() => 0.5 - Math.random()).slice(0, quantity)
     }),
-    [setFilterFunction]: (state, { payload: { name, filter } }) => ({
+    [setFilterFunction]: (state, { payload: { name, filter, value } }) => ({
       ...state,
       filters: {
         ...state.filters,
         [name]: filter
+      },
+      filtersValues: {
+        ...state.filtersValues,
+        [name]: value
       }
     }),
     [clearFilters]: state => ({
       ...state,
-      filters: {}
+      filters: {},
+      filtersValues: {},
+      searchTerm: ''
     })
   },
   defaultState

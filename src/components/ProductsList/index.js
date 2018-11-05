@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 
 import Product from './Product'
-import SortBarContainer from 'containers/SortBar'
-import FilterBarContainer from 'containers/FilterBar'
-import SearchByTermContainer from 'containers/SearchByTerm'
+import SortBarContainer from 'components/containers/SortBar'
+import FilterBarContainer from 'components/containers/FilterBar'
+import SearchByTermContainer from 'components/containers/SearchByTerm'
 
 import { ProductsListWrapper, ProductsWrapper, NoResults, Title } from './styled'
 

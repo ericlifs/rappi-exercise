@@ -2,7 +2,7 @@ import React from 'react'
 
 import Logo from './logo.png'
 import PageBlock from 'components/PageBlock'
-import CartContainer from 'containers/Cart'
+import CartContainer from 'components/containers/Cart'
 
 import { HeaderWrapper, BaratonLogo } from './styled'
 

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import PriceFilterContainer from 'containers/PriceFilter'
-import AvailabilityFilterContainer from 'containers/AvailabilityFilter'
-import StockFilterContainer from 'containers/StockFilter'
+import PriceFilterContainer from 'components/containers/PriceFilter'
+import AvailabilityFilterContainer from 'components/containers/AvailabilityFilter'
+import StockFilterContainer from 'components/containers/StockFilter'
 
 import { FilterBarWrapper, Title } from './styled'
 

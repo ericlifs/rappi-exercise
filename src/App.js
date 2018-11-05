@@ -4,8 +4,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 
 import createStore from './store'
-import HomeContainer from 'containers/Home'
-import CategoryContainer from 'containers/Category'
+import HomeContainer from 'pages/containers/Home'
+import CategoryContainer from 'pages/containers/Category'
 import GlobalStyle from 'config/styles'
 
 const { store, persistor } = createStore()

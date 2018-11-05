@@ -7,24 +7,23 @@ import { CheckboxInput, FilterColumn } from '../styled'
 
 export default class AvailabilityFilter extends React.PureComponent {
   state = {
-    available: false
+    [FILTERS.AVAILABILITY]: false
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.location.pathname !== this.props.location.pathname) {
-      this.setState({
-        available: false
-      })
+  static getDerivedStateFromProps(props) {
+    if (props.filters) {
+      return {
+        [FILTERS.AVAILABILITY]: props.filters[FILTERS.AVAILABILITY] || false
+      }
     }
+
+    return null
   }
 
   onFieldChange(ev) {
     const available = ev.target.checked
-    this.props.setFilterFunction(FILTERS.AVAILABILITY, availability(available))
 
-    this.setState({
-      available
-    })
+    this.props.setFilterFunction(FILTERS.AVAILABILITY, availability(available), available)
   }
 
   render() {
@@ -34,7 +33,7 @@ export default class AvailabilityFilter extends React.PureComponent {
         <CheckboxInput
           name="availability"
           type="checkbox"
-          checked={this.state.available}
+          checked={this.state[FILTERS.AVAILABILITY]}
           onChange={this.onFieldChange.bind(this)}
         />
       </FilterColumn>

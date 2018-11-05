@@ -3,38 +3,25 @@ import React from 'react'
 import { SearchByTermWrapper, SearchControl } from './styled'
 
 export default class SearchByTerm extends React.PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      term: ''
-    }
-
-    this.onSearchChange = this.onSearchChange.bind(this)
+  state = {
+    term: ''
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.location.pathname !== this.props.location.pathname) {
-      this.setState({
-        term: ''
-      })
+  static getDerivedStateFromProps(props) {
+    return {
+      term: props.searchTerm || ''
     }
   }
 
   onSearchChange(event) {
-    this.setState(
-      {
-        term: event.target.value
-      },
-      () => this.props.setSearchTerm(this.state.term)
-    )
+    this.props.setSearchTerm(event.target.value)
   }
 
   render() {
     return (
       <SearchByTermWrapper opened={this.state.opened}>
         Buscar producto por nombre
-        <SearchControl onChange={this.onSearchChange} />
+        <SearchControl value={this.state.term} onChange={this.onSearchChange.bind(this)} />
       </SearchByTermWrapper>
     )
   }

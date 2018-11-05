@@ -11,13 +11,15 @@ export default class PriceFilter extends React.PureComponent {
     [FILTERS.MAX_VALUE]: ''
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.location.pathname !== this.props.location.pathname) {
-      this.setState({
-        [FILTERS.MIN_VALUE]: '',
-        [FILTERS.MAX_VALUE]: ''
-      })
+  static getDerivedStateFromProps(props) {
+    if (props.filters) {
+      return {
+        [FILTERS.MIN_VALUE]: props.filters[FILTERS.MIN_VALUE] || '',
+        [FILTERS.MAX_VALUE]: props.filters[FILTERS.MAX_VALUE] || ''
+      }
     }
+
+    return null
   }
 
   onFieldChange(field, ev) {
@@ -25,17 +27,13 @@ export default class PriceFilter extends React.PureComponent {
 
     switch (field) {
       case FILTERS.MIN_VALUE:
-        this.props.setFilterFunction(FILTERS.MIN_VALUE, minValue(value))
+        this.props.setFilterFunction(FILTERS.MIN_VALUE, minValue(value), value)
         break
 
       default:
-        this.props.setFilterFunction(FILTERS.MAX_VALUE, maxValue(value))
+        this.props.setFilterFunction(FILTERS.MAX_VALUE, maxValue(value), value)
         break
     }
-
-    this.setState({
-      [field]: value
-    })
   }
 
   render() {
